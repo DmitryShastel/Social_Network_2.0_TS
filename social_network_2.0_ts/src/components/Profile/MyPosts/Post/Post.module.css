@@ -1,0 +1,18 @@
+.mypost img {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.mypost .img {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.item {
+    color: red;
+}
+
+.item nav {
+    color: deepskyblue;
+    padding: 5px;
+}
