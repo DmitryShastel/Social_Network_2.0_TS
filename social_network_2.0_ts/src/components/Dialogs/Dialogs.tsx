@@ -8,7 +8,6 @@ export const Dialogs = () => {
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 <NavLink to='/dialogs' className={navData => navData.isActive ? s.active : s.item}>Dima</NavLink>
-                <NavLink to='/dialogs' className={navData => navData.isActive ? s.active : s.item}>Dima</NavLink>
 
             </div>
             <div className={s.message}>
