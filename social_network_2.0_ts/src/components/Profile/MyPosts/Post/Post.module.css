@@ -1,18 +1,22 @@
 .mypost img {
+    padding-left: 10px;
     width: 30px;
     border-radius: 50%;
 }
 
 .mypost .img {
+
     width: 30px;
     border-radius: 50%;
 }
 
 .item {
+    padding-left: 10px;
     color: red;
 }
 
 .item nav {
+
     color: deepskyblue;
     padding: 5px;
 }
