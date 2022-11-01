@@ -6,7 +6,7 @@ export type PostType = {
     message: string | number
 }
 
-export const Post: React.FC<PostType> = (props) => {
+export const Post = (props:PostType) => {
     return (
         <div className={s.mypost}>
             <div className={s.item}>
