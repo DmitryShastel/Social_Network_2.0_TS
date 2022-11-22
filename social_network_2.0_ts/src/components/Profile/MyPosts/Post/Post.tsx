@@ -2,11 +2,14 @@ import React from "react";
 import s from './Post.module.css'
 
 export type PostType = {
-    like: string
+    like: string | number
     message: string | number
+    id: number
 }
 
 export const Post = (props:PostType) => {
+
+
     return (
         <div className={s.mypost}>
             <div className={s.item}>
