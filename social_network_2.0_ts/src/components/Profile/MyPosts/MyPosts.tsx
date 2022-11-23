@@ -11,6 +11,8 @@ export const MyPosts = () => {
         {id: 2, message: 'It is my first post', like: 23}
     ]
 
+
+
     return (
         <div className={s.posts}>
             <div>Ava + description</div>
