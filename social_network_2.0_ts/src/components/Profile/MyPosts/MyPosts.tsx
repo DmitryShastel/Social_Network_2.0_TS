@@ -9,12 +9,6 @@ export type MyPostsType = {
 
 export const MyPosts = (props:MyPostsType) => {
 
-    // let posts = [
-    //     {id: 1, message: 'Hi how are you', like: 15},
-    //     {id: 2, message: 'It is my first post', like: 23}
-    // ]
-
-
     let postElements = props.posts.map(p => <Post id={p.id} message={p.message} like={p.like}/>)
 
     return (

@@ -9,9 +9,14 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {MyPostsType} from "./components/Profile/MyPosts/MyPosts";
+import {PostType} from "./components/Profile/MyPosts/Post/Post";
 
+type AppType = {
+    posts: Array<PostType>
+}
 
-const App = () => {
+const App = (props: AppType) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -19,7 +24,7 @@ const App = () => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='profife/' element={<Profile/>}/>
+                        <Route path='profife/' element={<Profile posts={props.posts}/>}/>
                         <Route path='dialogs/*' element={<Dialogs/>}/>
                         <Route path='news/' element={<News/>}/>
                         <Route path='music/' element={<Music/>}/>
