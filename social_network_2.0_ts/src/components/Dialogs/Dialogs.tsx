@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
+import {Message} from "./Message/Message";
 
 type DialogItemType = {
     name: string
@@ -19,11 +20,6 @@ const DialogItem = (props: DialogItemType) => {
     )
 }
 
-const Message = (props: MessageType) => {
-    return (
-        <div>{props.message}</div>
-    )
-}
 
 export const Dialogs = () => {
 
