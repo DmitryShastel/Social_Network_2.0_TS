@@ -1,6 +1,6 @@
 import React from "react";
 
-type MessageType = {
+export type MessageType = {
     message: string
     id: number
 }
