@@ -1,9 +1,10 @@
 import React from "react";
 import {Post} from "./Post/Post";
 import s from './Myposts.module.css'
+import {PostsType, ProfilePageType} from "../../../redux/state";
 
 
-export const MyPosts = (props:any) => {
+export const MyPosts = (props: ProfilePageType) => {
 
     let postElements = props.posts.map(p => <Post id={p.id} message={p.message} like={p.like}/>)
 

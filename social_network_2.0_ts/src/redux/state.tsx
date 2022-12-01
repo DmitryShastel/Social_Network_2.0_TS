@@ -1,6 +1,6 @@
 export type StateType = {
     profilePage: ProfilePageType
-    dialogsPage: dialogsPage
+    dialogsPage: dialogsPageType
 }
 
 export type MessageType = {
@@ -24,7 +24,7 @@ export type ProfilePageType = {
 }
 
 
-export type dialogsPage = {
+export type dialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
 }

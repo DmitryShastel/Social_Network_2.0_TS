@@ -12,14 +12,11 @@ export type ProfileType = {
 export const Profile = (props: ProfileType) => {
     return (
         <div>
-            <div>
 
-                <div className={s.postsContent}>
-                    <ProfileInfo/>
-                    <MyPosts posts={props.state.posts}/>
-                </div>
+            <div className={s.postsContent}>
+                <ProfileInfo/>
+                <MyPosts posts={props.state.posts}/>
             </div>
-
         </div>
     )
 }
