@@ -12,8 +12,10 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {PostType} from "./components/Profile/MyPosts/Post/Post";
 import {DialogItemType} from "./components/Dialogs/DialogItem/DialogItem";
 import {MessageType} from "./components/Dialogs/Message/Message";
+import {StateType} from "./redux/state";
 
 type AppType = {
+    state: StateType
     posts: Array<PostType>
     dialogs: Array<DialogItemType>
     messages: Array<MessageType>
@@ -27,7 +29,7 @@ const App = (props: AppType) => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='profife/' element={<Profile posts={props.posts}/>}/>
+                        <Route path='profife/' element={<Profile state={props.state.posts}/>}/>
                         <Route path='dialogs/*' element={<Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
                         <Route path='news/' element={<News/>}/>
                         <Route path='music/' element={<Music/>}/>

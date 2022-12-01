@@ -1,13 +1,9 @@
 import React from "react";
-import {Post, PostType} from "./Post/Post";
+import {Post} from "./Post/Post";
 import s from './Myposts.module.css'
 
 
-export type MyPostsType = {
-    posts: Array<PostType>
-}
-
-export const MyPosts = (props:MyPostsType) => {
+export const MyPosts = (props:any) => {
 
     let postElements = props.posts.map(p => <Post id={p.id} message={p.message} like={p.like}/>)
 

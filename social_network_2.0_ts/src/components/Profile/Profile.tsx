@@ -13,7 +13,7 @@ export const Profile = (props: MyPostsType) => {
 
                 <div className={s.postsContent}>
                     <ProfileInfo/>
-                    <MyPosts posts={props.posts}/>
+                    <MyPosts posts={props.state.posts}/>
                 </div>
             </div>
 

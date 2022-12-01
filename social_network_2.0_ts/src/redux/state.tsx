@@ -1,5 +1,38 @@
-export let state = {
-    prifilePage: {
+export type StateType = {
+    profilePage: ProfilePageType
+    dialogsPage: dialogsPage
+}
+
+export type MessageType = {
+    id: number
+    message: string
+}
+
+export type DialogsType = {
+    id: number
+    name: string
+}
+
+export type PostsType = {
+    id: number
+    message: string
+    like: number
+}
+
+export type ProfilePageType = {
+    posts: Array<PostsType>
+}
+
+
+export type dialogsPage = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessageType>
+}
+
+
+
+export let state: StateType = {
+    profilePage: {
         posts: [
             {id: 1, message: 'Hi how are you', like: 15},
             {id: 2, message: 'It is my first post', like: 23}]
