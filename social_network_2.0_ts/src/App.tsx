@@ -9,19 +9,9 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {PostType} from "./components/Profile/MyPosts/Post/Post";
-import {DialogItemType} from "./components/Dialogs/DialogItem/DialogItem";
-import {MessageType} from "./components/Dialogs/Message/Message";
-import {StateType} from "./redux/state";
 
-type AppType = {
-    state: StateType
-    posts: Array<PostType>
-    dialogs: Array<DialogItemType>
-    messages: Array<MessageType>
-}
 
-const App = (props: AppType) => {
+const App = (props: any) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
