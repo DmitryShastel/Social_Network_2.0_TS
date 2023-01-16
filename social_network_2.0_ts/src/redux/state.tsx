@@ -30,6 +30,11 @@ export type dialogsPageType = {
 }
 
 
+export let addPost = (postMessage: string) => {
+    let newPost: PostsType = {id: 1, message: postMessage, like: 0}
+    state.profilePage.posts.push(newPost)
+}
+
 
 export let state: StateType = {
     profilePage: {
