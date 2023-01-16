@@ -6,3 +6,51 @@
 .button{
     margin-bottom: 15px;
 }
+
+.posts button{
+    margin-bottom: 15px;
+    border: none;
+    background: #3a7999;
+    color: #f2f2f2;
+    padding: 8px 15px;
+    font-size: 15px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    margin-left: 2px;
+}
+
+.posts button:hover{
+    background: rgba(0,0,0,0.6);
+    color: #3a7999;
+    box-shadow: inset 0 0 0 3px #3a7999;
+    cursor: pointer;
+}
+
+.posts textarea {
+    padding: 0px 20px;
+    margin: 15px 0 5px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    font-family: 'Heebo', sans-serif;
+    line-height: 1.5;
+
+}
+
+.posts textarea:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+
+.posts textarea:focus {
+    cursor: text;
+    background-color: white;
+    border-color: #747dd2;
+    transition: all 0.7s;
+}

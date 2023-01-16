@@ -11,7 +11,7 @@ type DialogsType = {
 
 export const Dialogs = (props: DialogsType) => {
 
-   let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
     let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
 
     return (
@@ -23,7 +23,10 @@ export const Dialogs = (props: DialogsType) => {
             <div className={s.message}>
                 {messagesElements}
             </div>
-
+            <div>
+                <textarea></textarea>
+                <button>Add new message</button>
+            </div>
         </div>
     )
 }
