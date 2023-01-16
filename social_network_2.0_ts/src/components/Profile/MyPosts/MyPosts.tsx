@@ -8,12 +8,11 @@ export const MyPosts = (props: ProfilePageType) => {
 
     let postElements = props.posts.map(p => <Post id={p.id} message={p.message} like={p.like}/>)
 
-    let newPostElement = React.createRef()
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value = '';
+        let text = newPostElement.current?.value;
+        alert(text);
     }
 
     return (

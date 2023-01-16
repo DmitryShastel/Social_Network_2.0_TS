@@ -1,6 +1,7 @@
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: dialogsPageType
+
 }
 export type MessageType = {
     id: number
@@ -14,6 +15,10 @@ export type PostsType = {
     id: number
     message: string
     like: number
+}
+
+export type ProfileType = {
+    state: ProfilePageType
 }
 export type ProfilePageType = {
     posts: Array<PostsType>
