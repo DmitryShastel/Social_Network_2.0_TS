@@ -11,27 +11,26 @@ export type DialogsType = {
     id: number
     name: string
 }
+export type dialogsPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessageType>
+}
+
 export type PostsType = {
     id: number
     message: string
     like: number
 }
 
-export type ProfileType = {
-    state: ProfilePageType
-}
+
 export type ProfilePageType = {
     posts: Array<PostsType>
 }
-export type dialogsPageType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessageType>
 
-}
+export type addPostType = (postText: string) => void
 
-
-export let addPost = (postMessage: string) => {
-    let newPost: PostsType = {id: 1, message: postMessage, like: 0}
+export let addPost = (postText: string) => {
+    let newPost: PostsType = {id: new Date().getTime(), message: postText, like: 0}
     state.profilePage.posts.push(newPost)
 }
 
