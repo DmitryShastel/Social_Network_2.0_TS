@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {addPost, state} from "./redux/state";
+import {addPost, StateType} from "./redux/state";
 
 
-const renderEntireTree = () => {
+export const renderEntireTree = (state: StateType) => {
     const root = ReactDOM.createRoot(
         document.getElementById('root') as HTMLElement
     );

@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: dialogsPageType
@@ -32,6 +34,7 @@ export type addPostType = (postText: string) => void
 export let addPost = (postText: string) => {
     let newPost: PostsType = {id: new Date().getTime(), message: postText, like: 0}
     state.profilePage.posts.push(newPost)
+    renderEntireTree(state)
 }
 
 
