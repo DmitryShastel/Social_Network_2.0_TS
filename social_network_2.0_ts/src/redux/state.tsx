@@ -1,6 +1,3 @@
-import {renderEntireTree} from "../index";
-
-
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: dialogsPageType
@@ -34,6 +31,9 @@ export type ProfilePageType = {
 export type addPostType = () => void
 export type updateNewPostTextType = (newPostText: string) => void
 
+let renderEntireTree = (state: StateType) => {
+
+}
 export let addPost = () => {
     let newPost: PostsType =
         {
@@ -48,6 +48,10 @@ export let addPost = () => {
 export let updateNewPostText = (newPostText: string) => {
     state.profilePage.newPostText = newPostText
     renderEntireTree(state)
+}
+
+export let subscribe = (observer: any) => {
+    renderEntireTree = observer
 }
 
 

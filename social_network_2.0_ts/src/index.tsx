@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import {addPost, state, StateType, updateNewPostText} from "./redux/state";
+import {addPost, state, StateType, subscribe, updateNewPostText} from "./redux/state";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -24,7 +24,5 @@ export const renderEntireTree = (state: StateType) => {
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-
-
-
 renderEntireTree(state) ;
+subscribe(renderEntireTree)
