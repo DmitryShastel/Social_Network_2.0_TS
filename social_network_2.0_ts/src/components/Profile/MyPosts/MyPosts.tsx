@@ -1,13 +1,14 @@
 import React from "react";
 import {Post} from "./Post/Post";
 import s from './Myposts.module.css'
-import {addPostType, PostsType} from "../../../redux/state";
+import {addPostType, PostsType, updateNewPostText, updateNewPostTextType} from "../../../redux/state";
 
 
 type MyPostType = {
     addPost: addPostType
     posts: Array<PostsType>
     newPostText?: string
+    updateNewPostText: updateNewPostTextType
 }
 
 export const MyPosts = (props: MyPostType) => {
@@ -17,15 +18,22 @@ export const MyPosts = (props: MyPostType) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     const addPost = () => {
-        if(newPostElement.current) {
-            let text = newPostElement.current?.value
-            props.addPost(text);
-        }
+        props.addPost();
+        props.updateNewPostText('')
+
+
+        // if (newPostElement.current) {
+        //     let text = newPostElement.current?.value
+        //     props.addPost(text);
+        //     props.updateNewPostText('')
+        // }
     }
 
     const onPostChange = () => {
-
+        let text = newPostElement.current?.value
+        props.updateNewPostText(newPostElement.current ? newPostElement.current.value : '')
     }
+
 
     return (
         <div className={s.posts}>

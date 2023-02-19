@@ -29,22 +29,29 @@ export type ProfilePageType = {
     newPostText: string
 }
 
-export type addPostType = (postText: string) => void
+export type addPostType = () => void
+export type updateNewPostTextType = (newPostText: string) => void
 
-export let addPost = (postText: string) => {
-    let newPost: PostsType = {id: new Date().getTime(), message: postText, like: 0}
+export let addPost = () => {
+    let newPost: PostsType =
+        {
+            id: new Date().getTime(),
+            message: state.profilePage.newPostText,
+            like: 0
+        }
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText = ''
     renderEntireTree(state)
 }
 
-export let updateNewPostText = (newText: string) => {
-    state.profilePage.newPostText = newText
+export let updateNewPostText = (newPostText: string) => {
+    state.profilePage.newPostText = newPostText
     renderEntireTree(state)
 }
 
 
 export let state: StateType = {
-    profilePage:  {
+    profilePage: {
         posts: [
             {id: 1, message: 'Hi how are you', like: 15},
             {id: 2, message: 'It is my first post', like: 23}]
