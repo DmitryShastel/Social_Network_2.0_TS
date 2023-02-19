@@ -1,4 +1,5 @@
-import {renderEntireTree} from "../render";
+import {renderEntireTree} from "../index";
+
 
 export type StateType = {
     profilePage: ProfilePageType
