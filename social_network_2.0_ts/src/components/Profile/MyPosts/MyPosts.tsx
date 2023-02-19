@@ -24,7 +24,7 @@ export const MyPosts = (props: MyPostType) => {
     }
 
     const onPostChange = () => {
-        
+
     }
 
     return (
