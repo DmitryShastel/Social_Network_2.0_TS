@@ -7,6 +7,7 @@ import {addPostType, PostsType} from "../../../redux/state";
 type MyPostType = {
     addPost: addPostType
     posts: Array<PostsType>
+    newPostText?: string
 }
 
 export const MyPosts = (props: MyPostType) => {
@@ -22,12 +23,20 @@ export const MyPosts = (props: MyPostType) => {
         }
     }
 
+    const onPostChange = () => {
+        
+    }
+
     return (
         <div className={s.posts}>
             <div>Ava + description</div>
             <div>My posts</div>
             <div>
-                <textarea ref={newPostElement}></textarea>
+                <textarea
+                    ref={newPostElement}
+                    value={props.newPostText}
+                    onChange={onPostChange}
+                />
                 <div className={s.button}>
                     <button onClick={addPost}>Add Post</button>
                 </div>
