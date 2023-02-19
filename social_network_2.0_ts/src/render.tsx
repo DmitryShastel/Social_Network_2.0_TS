@@ -6,18 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import {addPost, StateType, updateNewPostText} from "./redux/state";
 
 
+const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement
+);
 export const renderEntireTree = (state: StateType) => {
-    const root = ReactDOM.createRoot(
-        document.getElementById('root') as HTMLElement
-    );
+
     root.render(
         <React.StrictMode>
             <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
         </React.StrictMode>
     );
 }
-
-
 
 
 // If you want to start measuring performance in your app, pass a function

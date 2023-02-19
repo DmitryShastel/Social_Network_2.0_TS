@@ -3,6 +3,7 @@ import {renderEntireTree} from "../render";
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: dialogsPageType
+
 }
 export type MessageType = {
     id: number
@@ -43,7 +44,6 @@ export let addPost = () => {
     state.profilePage.newPostText = ''
     renderEntireTree(state)
 }
-
 export let updateNewPostText = (newPostText: string) => {
     state.profilePage.newPostText = newPostText
     renderEntireTree(state)
@@ -54,9 +54,11 @@ export let state: StateType = {
     profilePage: {
         posts: [
             {id: 1, message: 'Hi how are you', like: 15},
-            {id: 2, message: 'It is my first post', like: 23}]
+            {id: 2, message: 'It is my first post', like: 23}
+        ],
+        newPostText: '',
     },
-    newPostText: '',
+
 
     dialogsPage: {
         dialogs: [

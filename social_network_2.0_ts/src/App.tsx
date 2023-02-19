@@ -9,13 +9,12 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {addPostType, ProfilePageType, StateType, updateNewPostText, updateNewPostTextType} from "./redux/state";
+import {addPostType, StateType, updateNewPostTextType} from "./redux/state";
 
 
 type AppType = {
     state: StateType,
     addPost: addPostType
-    profilePage: ProfilePageType
     updateNewPostText: updateNewPostTextType
 }
 
