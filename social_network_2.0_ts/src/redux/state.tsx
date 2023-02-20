@@ -110,7 +110,7 @@ export let store = {
                 id: new Date().getTime(),
                 message: this._state.profilePage.newPostText,
                 like: 0
-            }
+            };
         this._state.profilePage.posts.push(newPost)
         this._state.profilePage.newPostText = ''
         this.callSubscriber(this._state)
