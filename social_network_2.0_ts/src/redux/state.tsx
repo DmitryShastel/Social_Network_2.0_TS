@@ -119,7 +119,7 @@ export let store = {
         state.profilePage.newPostText = newPostText
         renderEntireTree(state)
     },
-    subscribe () {
+    subscribe (abserver: any) {
         renderEntireTree = observer
     }
 }
