@@ -28,28 +28,26 @@ export type ProfilePageType = {
 export type addPostType = () => void
 export type updateNewPostTextType = (newPostText: string) => void
 
-let renderEntireTree = (state: StateType) => {
+// let renderEntireTree = (state: StateType) => {
+//
+// }
+// export let addPost = () => {
+//     let newPost: PostsType =
+//         {
+//             id: new Date().getTime(),
+//             message: state.profilePage.newPostText,
+//             like: 0
+//         }
+//     state.profilePage.posts.push(newPost)
+//     state.profilePage.newPostText = ''
+//     renderEntireTree(state)
+// }
+// export let updateNewPostText = (newPostText: string) => {
+//     state.profilePage.newPostText = newPostText
+//     renderEntireTree(state)
+// }
 
-}
-export let addPost = () => {
-    let newPost: PostsType =
-        {
-            id: new Date().getTime(),
-            message: state.profilePage.newPostText,
-            like: 0
-        }
-    state.profilePage.posts.push(newPost)
-    state.profilePage.newPostText = ''
-    renderEntireTree(state)
-}
-export let updateNewPostText = (newPostText: string) => {
-    state.profilePage.newPostText = newPostText
-    renderEntireTree(state)
-}
-
-export let subscribe = (observer: any) => {
-    renderEntireTree = observer
-}
+//export let subscribe = (observer: any) => {renderEntireTree = observer}
 
 
 // export let state: StateType = {
@@ -105,4 +103,23 @@ export let store = {
     getState() {
         return this._state
     },
+   callSubscriber () {},
+    addPost () {
+        let newPost: PostsType =
+            {
+                id: new Date().getTime(),
+                message: state.profilePage.newPostText,
+                like: 0
+            }
+        state.profilePage.posts.push(newPost)
+        state.profilePage.newPostText = ''
+        renderEntireTree(state)
+    },
+    updateNewPostText() {
+        state.profilePage.newPostText = newPostText
+        renderEntireTree(state)
+    },
+    subscribe () {
+        renderEntireTree = observer
+    }
 }
