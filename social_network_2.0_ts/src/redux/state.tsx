@@ -108,18 +108,18 @@ export let store = {
         let newPost: PostsType =
             {
                 id: new Date().getTime(),
-                message: state.profilePage.newPostText,
+                message: this._state.profilePage.newPostText,
                 like: 0
             }
-        state.profilePage.posts.push(newPost)
-        state.profilePage.newPostText = ''
-        renderEntireTree(state)
+        this._state.profilePage.posts.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this.callSubscriber(this._state)
     },
-    updateNewPostText() {
-        state.profilePage.newPostText = newPostText
-        renderEntireTree(state)
+    updateNewPostText(newPostText: string) {
+        this._state.profilePage.newPostText = newPostText
+        this.callSubscriber(this._state)
     },
     subscribe (abserver: any) {
-        renderEntireTree = observer
+        this.callSubscriber = abserver
     }
 }
