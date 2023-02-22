@@ -75,5 +75,8 @@ export let store = {
     },
     subscribe (abserver: any) {
         this._callSubscriber = abserver
+    },
+    dispatch(action: {}) {
+        
     }
 }
