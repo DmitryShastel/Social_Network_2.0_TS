@@ -27,6 +27,11 @@ export type ProfilePageType = {
 
 export type StoreType = {
     _state: StateType
+    getState: () => StateType
+    _callSubscriber: (arg:StateType) => void
+    addPost: () => void
+    updateNewPostText: (newPostText: string) => void
+    subscribe: (abserver: () => void) => void
 
 }
 
@@ -34,7 +39,7 @@ export type addPostType = () => void
 export type updateNewPostTextType = (newPostText: string) => void
 
 
-export let store = {
+export let store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -62,7 +67,7 @@ export let store = {
     getState() {
         return this._state
     },
-   _callSubscriber (state: StateType) {},
+   _callSubscriber () {},
     addPost () {
         let newPost: PostsType =
             {
@@ -78,10 +83,12 @@ export let store = {
         this._state.profilePage.newPostText = newPostText
         this._callSubscriber(this._state)
     },
-    subscribe (abserver: any) {
+    subscribe (abserver) {
         this._callSubscriber = abserver
     },
-    dispatch(action: {}) {
 
-    }
 }
+
+// dispatch(action: {}) {
+//
+// }
