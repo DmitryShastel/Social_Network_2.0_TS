@@ -35,8 +35,13 @@ export type StoreType = {
 
 }
 
-export type addPostType = () => void
-export type updateNewPostTextType = (newPostText: string) => void
+// export type addPostType = () => void
+// export type updateNewPostTextType = (newPostText: string) => void
+
+export type ActionType = {
+    type: string
+    newPostText: string
+}
 
 
 export let store = {
@@ -83,8 +88,24 @@ export let store = {
         this._state.profilePage.newPostText = newPostText
         this._callSubscriber(this._state)
     },
-    subscribe (abserver: () => void) {
+    subscribe (abserver: (state: StateType) => void) {
         this._callSubscriber = abserver
     },
+    dispatch(action: ActionType) {
+        if(action.type === 'ADD-POST') {
+            let newPost: PostsType =
+                {
+                    id: new Date().getTime(),
+                    message: this._state.profilePage.newPostText,
+                    like: 0
+                };
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber(this._state)
+        }else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = action.newPostText
+            this._callSubscriber(this._state)
+        }
 
+    }
 }

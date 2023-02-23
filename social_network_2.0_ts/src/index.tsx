@@ -20,8 +20,6 @@ const renderEntireTree = (state: StateType) => {
     );
 }
 
-//@ts-ignore
 renderEntireTree(store.getState());
 store.subscribe(renderEntireTree)
 
-//
