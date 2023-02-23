@@ -25,6 +25,11 @@ export type ProfilePageType = {
     newPostText: string
 }
 
+export type StoreType = {
+    _state: StateType
+
+}
+
 export type addPostType = () => void
 export type updateNewPostTextType = (newPostText: string) => void
 
@@ -77,6 +82,6 @@ export let store = {
         this._callSubscriber = abserver
     },
     dispatch(action: {}) {
-        
+
     }
 }
