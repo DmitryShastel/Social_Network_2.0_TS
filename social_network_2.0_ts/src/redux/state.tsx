@@ -28,15 +28,13 @@ export type ProfilePageType = {
 export type StoreType = {
     _state: StateType
     getState: () => StateType
-    _callSubscriber: (arg:StateType) => void
+    _callSubscriber: (arg: StateType) => void
     addPost: () => void
     updateNewPostText: (newPostText: string) => void
     subscribe: (abserver: () => void) => void
 
 }
 
-// export type addPostType = () => void
-// export type updateNewPostTextType = (newPostText: string) => void
 
 export type ActionType = {
     type: string
@@ -74,12 +72,13 @@ export let store = {
     getState() {
         return this._state
     },
-   _callSubscriber (state: StateType) {},
-    subscribe (abserver: (state: StateType) => void) {
+    _callSubscriber(state: StateType) {
+    },
+    subscribe(abserver: (state: StateType) => void) {
         this._callSubscriber = abserver
     },
     dispatch(action: ActionType) {
-        if(action.type === 'ADD-POST') {
+        if (action.type === 'ADD-POST') {
             let newPost: PostsType =
                 {
                     id: new Date().getTime(),
@@ -89,26 +88,10 @@ export let store = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state)
-        }else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newPostText
             this._callSubscriber(this._state)
         }
 
     }
 }
-
-// addPost () {
-//     let newPost: PostsType =
-//         {
-//             id: new Date().getTime(),
-//             message: this._state.profilePage.newPostText,
-//             like: 0
-//         };
-//     this._state.profilePage.posts.push(newPost)
-//     this._state.profilePage.newPostText = ''
-//     this._callSubscriber(this._state)
-// },
-// updateNewPostText(newPostText: string) {
-//     this._state.profilePage.newPostText = newPostText
-//     this._callSubscriber(this._state)
-// },

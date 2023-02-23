@@ -15,13 +15,11 @@ const renderEntireTree = (state: StateType) => {
             <App
                 state={state}
                 dispatch={store.dispatch.bind(store)}
-                />
+            />
         </React.StrictMode>
     );
 }
 
-
-// updateNewPostText={store.updateNewPostText.bind(store)}
 renderEntireTree(store.getState());
 store.subscribe(renderEntireTree)
 
