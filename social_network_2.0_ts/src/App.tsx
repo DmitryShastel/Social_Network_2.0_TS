@@ -9,11 +9,11 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {ActionType, StateType,} from "./redux/state";
+import {DispatchType, StateType,} from "./redux/state";
 
 
 type AppType = {
-    dispatch: ActionType
+    dispatch: DispatchType
     state: StateType,
 }
 

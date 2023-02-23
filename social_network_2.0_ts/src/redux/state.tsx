@@ -43,9 +43,8 @@ export type ActionType = {
     newPostText: string
 }
 
-export type DispatchType = {
-    action: ActionType
-}
+export type DispatchType = (action: ActionType) => void
+
 
 export let store = {
     _state: {
