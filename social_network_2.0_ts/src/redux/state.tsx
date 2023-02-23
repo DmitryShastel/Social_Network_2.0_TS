@@ -43,6 +43,9 @@ export type ActionType = {
     newPostText: string
 }
 
+export type DispatchType = {
+    action: ActionType
+}
 
 export let store = {
     _state: {
@@ -73,21 +76,6 @@ export let store = {
         return this._state
     },
    _callSubscriber (state: StateType) {},
-    addPost () {
-        let newPost: PostsType =
-            {
-                id: new Date().getTime(),
-                message: this._state.profilePage.newPostText,
-                like: 0
-            };
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },
-    updateNewPostText(newPostText: string) {
-        this._state.profilePage.newPostText = newPostText
-        this._callSubscriber(this._state)
-    },
     subscribe (abserver: (state: StateType) => void) {
         this._callSubscriber = abserver
     },
@@ -109,3 +97,19 @@ export let store = {
 
     }
 }
+
+// addPost () {
+//     let newPost: PostsType =
+//         {
+//             id: new Date().getTime(),
+//             message: this._state.profilePage.newPostText,
+//             like: 0
+//         };
+//     this._state.profilePage.posts.push(newPost)
+//     this._state.profilePage.newPostText = ''
+//     this._callSubscriber(this._state)
+// },
+// updateNewPostText(newPostText: string) {
+//     this._state.profilePage.newPostText = newPostText
+//     this._callSubscriber(this._state)
+// },

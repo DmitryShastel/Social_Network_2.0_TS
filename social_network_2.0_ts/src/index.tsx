@@ -14,12 +14,14 @@ const renderEntireTree = (state: StateType) => {
         <React.StrictMode>
             <App
                 state={state}
-                addPost={store.addPost.bind(store)}
-                updateNewPostText={store.updateNewPostText.bind(store)}/>
+                dispatch={store.dispatch.bind(store)}
+                />
         </React.StrictMode>
     );
 }
 
+
+// updateNewPostText={store.updateNewPostText.bind(store)}
 renderEntireTree(store.getState());
 store.subscribe(renderEntireTree)
 
