@@ -39,7 +39,7 @@ export type addPostType = () => void
 export type updateNewPostTextType = (newPostText: string) => void
 
 
-export let store: StoreType = {
+export let store = {
     _state: {
         profilePage: {
             posts: [
@@ -67,7 +67,7 @@ export let store: StoreType = {
     getState() {
         return this._state
     },
-   _callSubscriber () {},
+   _callSubscriber (state: StateType) {},
     addPost () {
         let newPost: PostsType =
             {
@@ -83,12 +83,8 @@ export let store: StoreType = {
         this._state.profilePage.newPostText = newPostText
         this._callSubscriber(this._state)
     },
-    subscribe (abserver) {
+    subscribe (abserver: () => void) {
         this._callSubscriber = abserver
     },
 
 }
-
-// dispatch(action: {}) {
-//
-// }
