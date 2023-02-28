@@ -62,7 +62,8 @@ export let store = {
                 {id: 1, message: 'hi'},
                 {id: 2, message: 'buy'},
                 {id: 3, message: 'buy now'}
-            ]
+            ],
+            newMessage: '',
         }
     },
     getState() {
@@ -90,8 +91,11 @@ export let store = {
         }else if(action.type === ADD_MESSAGE) {
             let newMessage =  {
                 id: new Date().getTime(),
-                
+                message: this._state.dialogsPage.newMessage,
             }
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessage = ''
+            this._callSubscriber(this._state)
         }
     }
 }
