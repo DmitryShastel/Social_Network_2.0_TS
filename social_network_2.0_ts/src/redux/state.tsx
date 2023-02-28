@@ -63,7 +63,7 @@ export let store = {
                 {id: 2, message: 'buy'},
                 {id: 3, message: 'buy now'}
             ],
-            newMessage: '',
+            newMessageText: '',
         }
     },
     getState() {
@@ -91,15 +91,19 @@ export let store = {
         }else if(action.type === ADD_MESSAGE) {
             let newMessage =  {
                 id: new Date().getTime(),
-                message: this._state.dialogsPage.newMessage,
+                message: this._state.dialogsPage.newMessageText,
             }
             this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessage = ''
+            this._state.dialogsPage.newMessageText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.dialogsPage.messages = action.newMessageText
             this._callSubscriber(this._state)
         }
     }
 }
 
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -113,6 +117,8 @@ export type OnPostChangeActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
     newPostText: string
 }
+
+
 
 //types of Action Creators
 export type AddNewPostTextActionCreatorType = () =>  AddPostActionType
