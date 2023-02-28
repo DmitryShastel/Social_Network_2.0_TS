@@ -36,7 +36,7 @@ export type StoreType = {
 }
 
 
-
+export type ActionType = AddPostActionType | OnPostChangeActionType
 export type DispatchType = (action: ActionType) => void
 
 
@@ -96,22 +96,18 @@ const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
 
-
+//types of actions
 export type AddPostActionType = {
-    type: string
+    type: 'ADD-POST'
 }
 export type OnPostChangeActionType = {
-    type: string,
+    type: 'UPDATE-NEW-POST-TEXT',
     newPostText: string
 }
 
-export type ActionType = AddPostActionType | OnPostChangeActionType
-
-export type AddNewPostTextActionCreatorType = AddPostActionType
-export type UpdateNewPostTextActionCreatorType = OnPostChangeActionType
-
-
-
+//types of Action Creators
+export type AddNewPostTextActionCreatorType = () =>  AddPostActionType
+export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeActionType
 
 
 export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
