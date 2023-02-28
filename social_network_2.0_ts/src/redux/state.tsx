@@ -31,7 +31,7 @@ export type StoreType = {
     _callSubscriber: (arg: StateType) => void
     addPost: () => void
     updateNewPostText: (newPostText: string) => void
-    subscribe: (abserver: () => void) => void
+    subscribe: (observer: () => void) => void
 
 }
 
@@ -74,8 +74,8 @@ export let store = {
     },
     _callSubscriber(state: StateType) {
     },
-    subscribe(abserver: (state: StateType) => void) {
-        this._callSubscriber = abserver
+    subscribe(observer: (state: StateType) => void) {
+        this._callSubscriber = observer
     },
     dispatch(action: ActionType) {
         if (action.type === 'ADD-POST') {
@@ -93,5 +93,11 @@ export let store = {
             this._callSubscriber(this._state)
         }
 
+    }
+}
+
+export const addNewPostTextActionCreator = () => {
+    return {
+        type: 'ADD-POST'
     }
 }
