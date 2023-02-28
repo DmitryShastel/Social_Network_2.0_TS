@@ -36,7 +36,7 @@ export type StoreType = {
 }
 
 
-export type ActionType = AddPostActionType | OnPostChangeActionType
+export type ActionType = AddPostActionType | OnPostChangeActionType | AddMessageType | UpdateMessageType
 export type DispatchType = (action: ActionType) => void
 
 
@@ -117,12 +117,20 @@ export type OnPostChangeActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
     newPostText: string
 }
+export type AddMessageType = {
+    type: 'ADD-MESSAGE'
+}
 
-
+export type UpdateMessageType = {
+    type: 'UPDATE-NEW-POST-TEXT',
+    newMessageText: string
+}
 
 //types of Action Creators
 export type AddNewPostTextActionCreatorType = () =>  AddPostActionType
 export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeActionType
+export type AddNewMessageActionCreatorType = () => AddMessageType
+export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageType
 
 
 export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
@@ -135,5 +143,18 @@ export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType 
     return {
         type: UPDATE_NEW_POST_TEXT,
         newPostText: text
+    }
+}
+
+export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => {
+    return {
+        type: ADD_MESSAGE
+    }
+}
+
+export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (text) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newMessageText: text
     }
 }
