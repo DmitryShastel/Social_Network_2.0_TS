@@ -101,3 +101,10 @@ export const addNewPostTextActionCreator = () => {
         type: 'ADD-POST'
     }
 }
+
+export const updateNewPostTextActionCreator = (text: string) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newPostText: text
+    }
+}
