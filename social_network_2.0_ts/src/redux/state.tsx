@@ -87,11 +87,16 @@ export let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText
             this._callSubscriber(this._state)
+        }else if(action.type === ADD_MESSAGE) {
+            let newMessage =  {
+                id: new Date().getTime(),
+                
+            }
         }
-
     }
 }
 
+const ADD_MESSAGE = 'ADD-MESSAGE'
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
