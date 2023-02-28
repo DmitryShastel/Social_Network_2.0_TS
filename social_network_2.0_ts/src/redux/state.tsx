@@ -100,20 +100,27 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 export type AddPostActionType = {
     type: string
 }
-export type OnPostChangeActionType = (text: string) => void
+export type OnPostChangeActionType = {
+    type: string,
+    newPostText: string
+}
+
 export type ActionType = AddPostActionType | OnPostChangeActionType
 
+export type AddNewPostTextActionCreatorType = AddPostActionType
+export type UpdateNewPostTextActionCreatorType = OnPostChangeActionType
 
 
 
 
-export const addNewPostTextActionCreator: AddPostActionType = () => {
+
+export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
     return {
         type: ADD_POST
     }
 }
 
-export const updateNewPostTextActionCreator: OnPostChangeActionType = (text: string) => {
+export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType = (text) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newPostText: text
