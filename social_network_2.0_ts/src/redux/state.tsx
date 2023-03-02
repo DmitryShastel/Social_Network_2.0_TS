@@ -35,8 +35,6 @@ export type ProfilePageType = {
 }
 
 
-
-
 export type ActionType = AddPostActionType | OnPostChangeActionType | AddMessageActionType | UpdateMessageActionType
 
 
@@ -99,12 +97,9 @@ export let store = {
             this._state.dialogsPage.messages.push(newMessage)
             this._state.dialogsPage.newMessageText = ''
             this._callSubscriber(this._state)
-        }
-
-
-        else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
-            // this._state.dialogsPage.newMessageText = action
-            // this._callSubscriber(this._state)
+        } else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.dialogsPage.newMessageText = action.newMessageText
+            this._callSubscriber(this._state)
         }
     }
 

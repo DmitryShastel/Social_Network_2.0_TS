@@ -2,11 +2,12 @@ import React from "react";
 import s from './Dialogs.module.css'
 import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
-import {dialogsPageType} from "../../redux/state";
+import {dialogsPageType, DispatchType} from "../../redux/state";
 
 
 type DialogsType = {
     state: dialogsPageType
+    dispatch: DispatchType
 }
 
 export const Dialogs = (props: DialogsType) => {
