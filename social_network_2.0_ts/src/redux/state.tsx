@@ -23,6 +23,7 @@ export type DialogsType = {
 export type dialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
+    newMessageText: string
 }
 export type PostsType = {
     id: number
@@ -123,7 +124,6 @@ export type OnPostChangeActionType = {
 export type AddMessageActionType = {
     type: 'ADD-MESSAGE'
 }
-
 export type UpdateMessageActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT',
     newMessageText: string
@@ -135,26 +135,22 @@ export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeA
 export type AddNewMessageActionCreatorType = () => AddMessageActionType
 export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
 
-
 export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
     return {
         type: ADD_POST
     }
 }
-
 export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType = (text) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newPostText: text
     }
 }
-
 export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => {
     return {
         type: ADD_MESSAGE
     }
 }
-
 export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (text) => {
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
