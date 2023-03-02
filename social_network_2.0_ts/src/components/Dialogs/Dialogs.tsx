@@ -8,12 +8,14 @@ import {addNewMessageActionCreator, dialogsPageType, DispatchType} from "../../r
 type DialogsType = {
     state: dialogsPageType
     dispatch: DispatchType
+    newMessageText: string
 }
 
 export const Dialogs = (props: DialogsType) => {
 
     let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
     let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
+    let newMessageElement = React.createRef<HTMLTextAreaElement>()
 
     let addMessage = () => {
         props.dispatch(addNewMessageActionCreator())
@@ -21,7 +23,7 @@ export const Dialogs = (props: DialogsType) => {
     }
 
     let onMessageChange = () => {
-
+        let text = newMessageElement
     }
 
     return (
@@ -34,7 +36,10 @@ export const Dialogs = (props: DialogsType) => {
                 {messagesElements}
             </div>
             <div>
-                <textarea></textarea>
+                <textarea
+                    ref={newMessageElement}
+                    value={props.newMessageText}
+                    onChange={onMessageChange}></textarea>
                 <button onClick={addMessage}>Add new message</button>
             </div>
         </div>
