@@ -15,6 +15,14 @@ export const Dialogs = (props: DialogsType) => {
     let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
     let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
 
+    let addMessage = () => {
+
+    }
+
+    let onMessageChange = () => {
+
+    }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
