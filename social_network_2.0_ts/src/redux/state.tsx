@@ -10,8 +10,20 @@ export type StoreType = {
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: dialogsPageType
-
+    newsPage: newsPageType
 }
+
+//1
+export type PostsType = {
+    id: number
+    message: string
+    like: number
+}
+export type ProfilePageType = {
+    posts: Array<PostsType>
+    newPostText: string
+}
+//2
 export type MessageType = {
     id: number
     message: string
@@ -25,14 +37,14 @@ export type dialogsPageType = {
     messages: Array<MessageType>
     newMessageText: string
 }
-export type PostsType = {
+//3
+export type NewsType = {
     id: number
-    message: string
-    like: number
+    new: string
 }
-export type ProfilePageType = {
-    posts: Array<PostsType>
-    newPostText: string
+
+export type newsPageType = {
+    news: NewsType[]
 }
 
 
