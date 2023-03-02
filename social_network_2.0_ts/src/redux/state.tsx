@@ -36,7 +36,9 @@ export type StoreType = {
 }
 
 
-export type ActionType = AddPostActionType | OnPostChangeActionType | AddMessageType | UpdateMessageType
+export type ActionType = AddPostActionType | OnPostChangeActionType |  AddMessageActionType
+
+//  | UpdateMessageActionType
 export type DispatchType = (action: ActionType) => void
 
 
@@ -88,22 +90,27 @@ export let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText
             this._callSubscriber(this._state)
-        }else if(action.type === ADD_MESSAGE) {
-            let newMessage =  {
+        } else if (action.type === ADD_MESSAGE) {
+            let newMessage = {
                 id: new Date().getTime(),
                 message: this._state.dialogsPage.newMessageText,
             }
             this._state.dialogsPage.messages.push(newMessage)
             this._state.dialogsPage.newMessageText = ''
             this._callSubscriber(this._state)
-        } else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.messages = action.newMessageText
-            this._callSubscriber(this._state)
         }
+
+
+        // else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
+        //     this._state.dialogsPage.messages = action.newMessageText
+        //     this._callSubscriber(this._state)
+        // }
     }
+
 }
 
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -117,20 +124,20 @@ export type OnPostChangeActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
     newPostText: string
 }
-export type AddMessageType = {
+export type AddMessageActionType = {
     type: 'ADD-MESSAGE'
 }
 
-export type UpdateMessageType = {
-    type: 'UPDATE-NEW-POST-TEXT',
-    newMessageText: string
-}
+// export type UpdateMessageActionType = {
+//     type: 'UPDATE-NEW-POST-TEXT',
+//     newMessageText: string
+// }
 
 //types of Action Creators
-export type AddNewPostTextActionCreatorType = () =>  AddPostActionType
+export type AddNewPostTextActionCreatorType = () => AddPostActionType
 export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeActionType
-export type AddNewMessageActionCreatorType = () => AddMessageType
-export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageType
+export type AddNewMessageActionCreatorType = () => AddMessageActionType
+// export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
 
 
 export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
@@ -152,9 +159,9 @@ export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => 
     }
 }
 
-export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newMessageText: text
-    }
-}
+// export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (text) => {
+//     return {
+//         type: UPDATE_NEW_POST_TEXT,
+//         newMessageText: text
+//     }
+// }
