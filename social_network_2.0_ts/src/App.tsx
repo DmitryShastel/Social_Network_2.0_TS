@@ -33,7 +33,10 @@ const App = (props: AppType) => {
                             state={props.state.dialogsPage}
                             dispatch={props.dispatch}
                         />}/>
-                        <Route path='news/' element={<News/>}/>
+                        <Route path='news/' element={<News
+                            state={props.state.newsPage}
+                            // newsPage={props.state.newsPage}
+                        />}/>
                         <Route path='music/' element={<Music/>}/>
                         <Route path='settings/' element={<Settings/>}/>
                     </Routes>

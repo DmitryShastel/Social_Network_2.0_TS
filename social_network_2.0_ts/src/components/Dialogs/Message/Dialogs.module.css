@@ -1,23 +1,23 @@
-.dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-}
+/*.dialogs {*/
+/*    display: grid;*/
+/*    grid-template-columns: 2fr 10fr;*/
+/*}*/
 
-.dialogsItems {
-    display: grid;
-    padding: 10px;
-}
+/*.dialogsItems {*/
+/*    display: grid;*/
+/*    padding: 10px;*/
+/*}*/
 
-.item {
-    text-decoration: none;
-}
+/*.item {*/
+/*    text-decoration: none;*/
+/*}*/
 
-.dialogsItems .active {
-    text-decoration: none;
-    color: red;
-}
+/*.dialogsItems .active {*/
+/*    text-decoration: none;*/
+/*    color: red;*/
+/*}*/
 
-.message {
-    padding: 10px;
-}
+/*.message {*/
+/*    padding: 10px;*/
+/*}*/
 

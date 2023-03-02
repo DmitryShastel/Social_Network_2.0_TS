@@ -42,14 +42,12 @@ export type NewsType = {
     id: number
     new: string
 }
-
 export type newsPageType = {
-    news: NewsType[]
+    news: Array<NewsType>
 }
 
 
 export type ActionType = AddPostActionType | OnPostChangeActionType | AddMessageActionType | UpdateMessageActionType
-
 
 export type DispatchType = (action: ActionType) => void
 
@@ -80,8 +78,8 @@ export let store = {
         newsPage: {
             news: [
                 {id: 1, new: 'new #1'},
-                {id: 1, new: 'new #1'},
-                {id: 1, new: 'new #1'}
+                {id: 1, new: 'new #2'},
+                {id: 1, new: 'new #3'}
             ]
         }
     },
