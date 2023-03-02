@@ -2,7 +2,7 @@ import React from "react";
 import s from './Dialogs.module.css'
 import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
-import {dialogsPageType, DispatchType} from "../../redux/state";
+import {addNewMessageActionCreator, dialogsPageType, DispatchType} from "../../redux/state";
 
 
 type DialogsType = {
@@ -16,7 +16,8 @@ export const Dialogs = (props: DialogsType) => {
     let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
 
     let addMessage = () => {
-
+        props.dispatch(addNewMessageActionCreator())
+        console.log(props.state.messages)
     }
 
     let onMessageChange = () => {
@@ -34,7 +35,7 @@ export const Dialogs = (props: DialogsType) => {
             </div>
             <div>
                 <textarea></textarea>
-                <button>Add new message</button>
+                <button onClick={addMessage}>Add new message</button>
             </div>
         </div>
     )

@@ -60,7 +60,7 @@ export let store = {
             ],
 
             messages: [
-                {id: 1, message: 'hi'},
+                {id: 10, message: 'hi'},
                 {id: 2, message: 'buy'},
                 {id: 3, message: 'buy now'}
             ],
