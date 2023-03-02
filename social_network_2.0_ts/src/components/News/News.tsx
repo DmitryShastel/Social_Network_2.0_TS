@@ -8,6 +8,7 @@ export const News = () => {
                 News
             </div>
 
+
             <div className={s.addNews}>
                 <div>
                     <textarea/>

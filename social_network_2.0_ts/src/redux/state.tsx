@@ -51,8 +51,6 @@ export let store = {
             ],
             newPostText: '',
         },
-
-
         dialogsPage: {
             dialogs: [
                 {id: 1, name: 'Dima'},
@@ -66,6 +64,13 @@ export let store = {
                 {id: 3, message: 'buy now'}
             ],
             newMessageText: '',
+        },
+        newsPage: {
+            news: [
+                {id: 1, new: 'new #1'},
+                {id: 1, new: 'new #1'},
+                {id: 1, new: 'new #1'}
+            ]
         }
     },
     getState() {
