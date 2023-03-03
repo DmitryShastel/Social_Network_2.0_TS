@@ -1,9 +1,10 @@
 import React from "react";
 import s from './News.module.css'
-import {newsPageType} from "../../redux/state";
+import {addNewActionCreator, DispatchType, newsPageType, updateNewActionCreator} from "../../redux/state";
 
 type NewsPropsType = {
     state: newsPageType
+    dispatch: DispatchType
 }
 
 
@@ -14,11 +15,14 @@ export const News = (props: NewsPropsType) => {
     let newNewText = props.state.newNewsText
 
     let addNew = () => {
-
+        props.dispatch(addNewActionCreator())
+        console.log(props.state.news)
     }
 
     let onChangeNew = () => {
-
+        let text = newNewElement.current ? newNewElement.current.value : ''
+        let action = updateNewActionCreator(text)
+        props.dispatch(action)
     }
 
     return (

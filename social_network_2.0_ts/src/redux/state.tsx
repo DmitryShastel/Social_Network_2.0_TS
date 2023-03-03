@@ -132,7 +132,8 @@ export let store = {
             this._state.newsPage.newNewsText = ''
             this._callSubscriber(this._state)
         } else if (action.type === UPDATE_NEW) {
-
+            this._state.newsPage.newNewsText = action.newNewsText
+            this._callSubscriber(this._state)
         }
     }
 

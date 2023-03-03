@@ -35,7 +35,7 @@ const App = (props: AppType) => {
                         />}/>
                         <Route path='news/' element={<News
                             state={props.state.newsPage}
-                            // newsPage={props.state.newsPage}
+                            dispatch={props.dispatch}
                         />}/>
                         <Route path='music/' element={<Music/>}/>
                         <Route path='settings/' element={<Settings/>}/>
