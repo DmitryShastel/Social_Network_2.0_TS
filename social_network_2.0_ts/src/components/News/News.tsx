@@ -7,7 +7,6 @@ type NewsPropsType = {
     dispatch: DispatchType
 }
 
-
 export const News = (props: NewsPropsType) => {
 
     let newsElement = props.state.news.map(n => <div>{n.new}</div>)
