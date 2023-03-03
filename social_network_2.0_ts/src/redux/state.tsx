@@ -183,6 +183,7 @@ export type AddNewMessageActionCreatorType = () => AddMessageActionType
 export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
 //news
 export type AddNewActionCreatorType = () => AddNewActionType
+export type UpdateNewActionCreatorType = (text: string) => UpdateNewActionType
 
 
 //Action Creators
@@ -214,5 +215,11 @@ export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType =
 export const addNewActionCreator: AddNewActionCreatorType = () => {
     return {
         type: ADD_NEW
+    }
+}
+export const updateNewActionCreator : UpdateNewActionCreatorType = (text) => {
+    return{
+        type: UPDATE_NEW,
+        newNewsText: text
     }
 }
