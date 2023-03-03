@@ -44,6 +44,7 @@ export type NewsType = {
 }
 export type newsPageType = {
     news: Array<NewsType>
+    newNewsText: string
 }
 
 

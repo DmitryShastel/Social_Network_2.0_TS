@@ -10,6 +10,16 @@ type NewsPropsType = {
 export const News = (props: NewsPropsType) => {
 
     let newsElement = props.state.news.map(n => <div>{n.new}</div>)
+    let newNewElement = React.createRef<HTMLTextAreaElement>()
+    let newNewText = props.state.newNewsText
+
+    let addNew = () => {
+
+    }
+
+    let onChangeNew = () => {
+
+    }
 
     return (
         <div>
@@ -20,10 +30,14 @@ export const News = (props: NewsPropsType) => {
 
             <div className={s.addNews}>
                 <div>
-                    <textarea/>
+                    <textarea
+                        ref={newNewElement}
+                        value={newNewText}
+                        onChange={onChangeNew}
+                    />
                 </div>
                 <div>
-                    <button>Add a new</button>
+                    <button onClick={addNew}>Add a new</button>
                 </div>
             </div>
         </div>
