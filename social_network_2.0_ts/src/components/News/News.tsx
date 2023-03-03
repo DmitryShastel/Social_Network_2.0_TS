@@ -23,7 +23,7 @@ export const News = (props: NewsPropsType) => {
                     <textarea/>
                 </div>
                 <div>
-                    <button>Add New</button>
+                    <button>Add a new</button>
                 </div>
             </div>
         </div>

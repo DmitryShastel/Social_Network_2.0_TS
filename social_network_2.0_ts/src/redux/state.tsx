@@ -116,19 +116,24 @@ export let store = {
         } else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
             this._state.dialogsPage.newMessageText = action.newMessageText
             this._callSubscriber(this._state)
+        } else if(action.type = ADD_NEW) {
+
         }
     }
 
 }
 
-
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
+//Post
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+//Message
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+const ADD_MESSAGE = 'ADD-MESSAGE'
+//News
+const ADD_NEW = 'ADD-NEW'
 
-
-//types of actions
+//types of actions:
+//post
 export type AddPostActionType = {
     type: 'ADD-POST'
 }
@@ -136,6 +141,7 @@ export type OnPostChangeActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
     newPostText: string
 }
+//message
 export type AddMessageActionType = {
     type: 'ADD-MESSAGE'
 }
@@ -143,6 +149,9 @@ export type UpdateMessageActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT',
     newMessageText: string
 }
+//news
+
+
 
 //types of Action Creators
 export type AddNewPostTextActionCreatorType = () => AddPostActionType
