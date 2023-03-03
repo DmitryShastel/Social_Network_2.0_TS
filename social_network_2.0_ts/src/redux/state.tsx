@@ -167,11 +167,18 @@ export type AddNewActionType = {
 
 
 //types of Action Creators
+//post
 export type AddNewPostTextActionCreatorType = () => AddPostActionType
 export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeActionType
+//message
 export type AddNewMessageActionCreatorType = () => AddMessageActionType
 export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
+//news
+export type AddNewActionCreatorType = () => AddNewActionType
 
+
+//Action Creators
+//post
 export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
     return {
         type: ADD_POST
@@ -183,6 +190,7 @@ export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType 
         newPostText: text
     }
 }
+//message
 export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => {
     return {
         type: ADD_MESSAGE
@@ -192,5 +200,11 @@ export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType =
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
         newMessageText: text
+    }
+}
+//news
+export const addNewActionCreator: AddNewActionCreatorType = () => {
+    return {
+        type: ADD_NEW
     }
 }
