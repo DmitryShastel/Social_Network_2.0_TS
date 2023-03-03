@@ -47,7 +47,11 @@ export type newsPageType = {
 }
 
 
-export type ActionType = AddPostActionType | OnPostChangeActionType | AddMessageActionType | UpdateMessageActionType
+export type ActionType = AddPostActionType
+    | OnPostChangeActionType
+    | AddMessageActionType
+    | UpdateMessageActionType
+    | AddNewActionType
 
 export type DispatchType = (action: ActionType) => void
 
@@ -80,7 +84,8 @@ export let store = {
                 {id: 1, new: 'new #1'},
                 {id: 1, new: 'new #2'},
                 {id: 1, new: 'new #3'}
-            ]
+            ],
+            newNewsText: ''
         }
     },
     getState() {
@@ -113,11 +118,14 @@ export let store = {
             this._state.dialogsPage.messages.push(newMessage)
             this._state.dialogsPage.newMessageText = ''
             this._callSubscriber(this._state)
-        } else if (action.type = UPDATE_NEW_MESSAGE_TEXT) {
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.dialogsPage.newMessageText = action.newMessageText
             this._callSubscriber(this._state)
-        } else if(action.type = ADD_NEW) {
-
+        } else if (action.type === ADD_NEW) {
+            let newNew : NewsType = {
+                id: new Date().getTime(),
+                new: this._state.newsPage.newNewsText
+            }
         }
     }
 
@@ -150,7 +158,9 @@ export type UpdateMessageActionType = {
     newMessageText: string
 }
 //news
-
+export type AddNewActionType = {
+    type: 'ADD-NEW'
+}
 
 
 //types of Action Creators
