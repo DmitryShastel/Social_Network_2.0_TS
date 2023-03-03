@@ -126,6 +126,9 @@ export let store = {
                 id: new Date().getTime(),
                 new: this._state.newsPage.newNewsText
             }
+            this._state.newsPage.news.push(newNew)
+            this._state.newsPage.newNewsText = ''
+            this._callSubscriber(this._state)
         }
     }
 
