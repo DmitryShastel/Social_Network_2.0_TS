@@ -52,6 +52,7 @@ export type ActionType = AddPostActionType
     | AddMessageActionType
     | UpdateMessageActionType
     | AddNewActionType
+    | UpdateNewActionType
 
 export type DispatchType = (action: ActionType) => void
 
@@ -122,13 +123,15 @@ export let store = {
             this._state.dialogsPage.newMessageText = action.newMessageText
             this._callSubscriber(this._state)
         } else if (action.type === ADD_NEW) {
-            let newNew : NewsType = {
+            let newNew: NewsType = {
                 id: new Date().getTime(),
                 new: this._state.newsPage.newNewsText
             }
             this._state.newsPage.news.push(newNew)
             this._state.newsPage.newNewsText = ''
             this._callSubscriber(this._state)
+        } else if (action.type === UPDATE_NEW) {
+
         }
     }
 
@@ -142,6 +145,7 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 const ADD_MESSAGE = 'ADD-MESSAGE'
 //News
 const ADD_NEW = 'ADD-NEW'
+const UPDATE_NEW = 'UPDATE-NEW'
 
 //types of actions:
 //post
@@ -163,6 +167,10 @@ export type UpdateMessageActionType = {
 //news
 export type AddNewActionType = {
     type: 'ADD-NEW'
+}
+export  type UpdateNewActionType = {
+    type: 'UPDATE-NEW',
+    newNewsText: string
 }
 
 
