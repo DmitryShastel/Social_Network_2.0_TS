@@ -16,7 +16,6 @@ export const News = (props: NewsPropsType) => {
 
     let addNew = () => {
         props.dispatch(addNewActionCreator())
-        console.log(props.state.news)
     }
 
     let onChangeNew = () => {
