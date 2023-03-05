@@ -121,7 +121,7 @@ export let store = {
             this._state.dialogsPage.newMessageBody = ''
             this._callSubscriber(this._state)
         } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageBody = action.newMessageBody
+            this._state.dialogsPage.newMessageBody = action.body
             this._callSubscriber(this._state)
         } else if (action.type === ADD_NEW) {
             let newNew: NewsType = {
@@ -164,7 +164,7 @@ export type AddMessageActionType = {
 }
 export type UpdateMessageActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT',
-    newMessageBody: string
+    body: string
 }
 //news
 export type AddNewActionType = {
@@ -207,10 +207,10 @@ export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => 
         type: ADD_MESSAGE
     }
 }
-export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (text) => {
+export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (body) => {
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessageBody: text
+        body: body
     }
 }
 //news
