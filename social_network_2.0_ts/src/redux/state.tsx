@@ -1,3 +1,5 @@
+import {AddPostActionType, OnPostChangeActionType, profileReducer} from "./profile-reducer";
+
 export type StoreType = {
     _state: StateType
     getState: () => StateType
@@ -46,7 +48,8 @@ export type newsPageType = {
 }
 
 
-export type ActionType = AddPostActionType
+export type ActionType =
+    AddPostActionType
     | OnPostChangeActionType
     | AddMessageActionType
     | UpdateMessageActionType
@@ -97,69 +100,54 @@ export let store: StoreType = {
         this._callSubscriber = observer
     },
     dispatch(action: ActionType) {
-        if (action.type === ADD_POST) {
-            let newPost: PostsType =
-                {
-                    id: new Date().getTime(),
-                    message: this._state.profilePage.newPostText,
-                    like: 0
-                };
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newPostText
-            this._callSubscriber(this._state)
-        } else if (action.type === SEND_MESSAGE) {
-            let body = this._state.dialogsPage.newMessageBody
-            this._state.dialogsPage.newMessageBody = ''
-            this._state.dialogsPage.messages.push({id: new Date().getTime(), message: body})
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageBody = action.body
-            this._callSubscriber(this._state)
-        } else if (action.type === ADD_NEW) {
-            let newNew: NewsType = {
-                id: new Date().getTime(),
-                new: this._state.newsPage.newNewsText
-            }
-            this._state.newsPage.news.push(newNew)
-            this._state.newsPage.newNewsText = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW) {
-            this._state.newsPage.newNewsText = action.newNewsText
-            this._callSubscriber(this._state)
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._callSubscriber(this._state)
+
+
+        // if (action.type === ADD_POST) {
+        //     let newPost: PostsType =
+        //         {
+        //             id: new Date().getTime(),
+        //             message: this._state.profilePage.newPostText,
+        //             like: 0
+        //         };
+        //     this._state.profilePage.posts.push(newPost)
+        //     this._state.profilePage.newPostText = ''
+        //     this._callSubscriber(this._state)
+        // } else if (action.type === UPDATE_NEW_POST_TEXT) {
+        //     this._state.profilePage.newPostText = action.newPostText
+        //     this._callSubscriber(this._state)
+        // } else if (action.type === SEND_MESSAGE) {
+        //     let body = this._state.dialogsPage.newMessageBody
+        //     this._state.dialogsPage.newMessageBody = ''
+        //     this._state.dialogsPage.messages.push({id: new Date().getTime(), message: body})
+        //     this._callSubscriber(this._state)
+        // } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+        //     this._state.dialogsPage.newMessageBody = action.body
+        //     this._callSubscriber(this._state)
+        // } else if (action.type === ADD_NEW) {
+        //     let newNew: NewsType = {
+        //         id: new Date().getTime(),
+        //         new: this._state.newsPage.newNewsText
+        //     }
+        //     this._state.newsPage.news.push(newNew)
+        //     this._state.newsPage.newNewsText = ''
+        //     this._callSubscriber(this._state)
+        // } else if (action.type === UPDATE_NEW) {
+        //     this._state.newsPage.newNewsText = action.newNewsText
+        //     this._callSubscriber(this._state)
+        // }
     }
 }
 
-//Post
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-//Message
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-const SEND_MESSAGE = 'SEND-MESSAGE'
+
 //News
 const ADD_NEW = 'ADD-NEW'
 const UPDATE_NEW = 'UPDATE-NEW'
 
 //types of actions:
-//posts
-export type AddPostActionType = {
-    type: 'ADD-POST'
-}
-export type OnPostChangeActionType = {
-    type: 'UPDATE-NEW-POST-TEXT',
-    newPostText: string
-}
-//messages
-export type AddMessageActionType = {
-    type: 'SEND-MESSAGE'
-}
-export type UpdateMessageActionType = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT',
-    body: string
-}
+
 //news
 export type AddNewActionType = {
     type: 'ADD-NEW'
@@ -171,42 +159,14 @@ export  type UpdateNewActionType = {
 
 
 //types of Action Creators
-//posts
-export type AddNewPostTextActionCreatorType = () => AddPostActionType
-export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeActionType
-//messages
-export type SendMessageActionCreatorType = () => AddMessageActionType
-export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
+
 //news
 export type AddNewActionCreatorType = () => AddNewActionType
 export type UpdateNewActionCreatorType = (text: string) => UpdateNewActionType
 
 
 //Action Creators
-//posts
-export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
-    return {
-        type: ADD_POST
-    }
-}
-export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newPostText: text
-    }
-}
-//messages
-export const sendMessageActionCreator: SendMessageActionCreatorType = () => {
-    return {
-        type: SEND_MESSAGE
-    }
-}
-export const updateNewMessageBodyActionCreator: UpdateMessageActionCreatorType = (body) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        body: body
-    }
-}
+
 //news
 export const addNewActionCreator: AddNewActionCreatorType = () => {
     return {
