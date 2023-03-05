@@ -5,14 +5,13 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {
     dialogsPageType,
     DispatchType,
-    sendMessageActionCreator,
+    sendMessageActionCreator, StoreType,
     updateNewMessageBodyActionCreator
 } from "../../redux/state";
 
 
 type DialogsType = {
-    state: dialogsPageType
-    dispatch: DispatchType
+    store: StoreType
 }
 
 export const Dialogs = (props: DialogsType) => {
@@ -22,7 +21,7 @@ export const Dialogs = (props: DialogsType) => {
     let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
     let messagesElements = state.messages.map(m => <Message id={m.id} message={m.message}/>)
     let newMessageElement = React.createRef<HTMLTextAreaElement>()
-    let newMessageBody = props.state.newMessageBody
+    let newMessageBody = state.newMessageBody
 
     let onSendMessageClick = () => {
         props.store.dispatch(sendMessageActionCreator())

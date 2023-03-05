@@ -9,12 +9,13 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {DispatchType, StateType, store,} from "./redux/state";
+import {DispatchType, StateType, store, StoreType,} from "./redux/state";
 
 
 type AppType = {
-    dispatch: DispatchType
+    store: StoreType
     state: StateType,
+    dispatch: DispatchType
 }
 
 const App = (props: AppType) => {
@@ -31,7 +32,6 @@ const App = (props: AppType) => {
                         />}/>
                         <Route path='dialogs/*' element={<Dialogs
                             store={props.store}
-                            dispatch={props.dispatch}
                         />}/>
                         <Route path='news/' element={<News
                             state={props.state.newsPage}
