@@ -17,19 +17,21 @@ type DialogsType = {
 
 export const Dialogs = (props: DialogsType) => {
 
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
+    let state = props.store.getState().dialogsPage
+
+    let dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let messagesElements = state.messages.map(m => <Message id={m.id} message={m.message}/>)
     let newMessageElement = React.createRef<HTMLTextAreaElement>()
     let newMessageBody = props.state.newMessageBody
 
-    let addMessage = () => {
-        props.dispatch(sendMessageActionCreator())
+    let onSendMessageClick = () => {
+        props.store.dispatch(sendMessageActionCreator())
     }
 
-    let onMessageChange = () => {
-        let text = newMessageElement.current ? newMessageElement.current.value : ''
-        let action = updateNewMessageBodyActionCreator(text)
-        props.dispatch(action)
+    let onNewMessageChange = () => {
+        let body = newMessageElement.current ? newMessageElement.current.value : ''
+        let action = updateNewMessageBodyActionCreator(body)
+        props.store.dispatch(action)
     }
 
     return (
@@ -45,8 +47,8 @@ export const Dialogs = (props: DialogsType) => {
                 <textarea
                     ref={newMessageElement}
                     value={newMessageBody}
-                    onChange={onMessageChange}></textarea>
-                <button onClick={addMessage}>Add new message</button>
+                    onChange={onNewMessageChange}></textarea>
+                <button onClick={onSendMessageClick}>Add new message</button>
             </div>
         </div>
     )

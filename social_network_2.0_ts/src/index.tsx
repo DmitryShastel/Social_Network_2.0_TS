@@ -14,6 +14,7 @@ const renderEntireTree = (state: StateType) => {
         <React.StrictMode>
             <App
                 state={state}
+                store={store}
                 dispatch={store.dispatch.bind(store)}
             />
         </React.StrictMode>
