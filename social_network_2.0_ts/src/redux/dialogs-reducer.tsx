@@ -1,8 +1,7 @@
-import {ActionType, DialogsType, SendMessageActionCreatorType, UpdateMessageActionCreatorType} from "./state";
+import {ActionType, dialogsPageType, DialogsType} from "./state";
 
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 const SEND_MESSAGE = 'SEND-MESSAGE'
-
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 export type AddMessageActionType = {
     type: 'SEND-MESSAGE'
@@ -14,10 +13,22 @@ export type UpdateMessageActionType = {
 
 
 export type SendMessageActionCreatorType = () => AddMessageActionType
-export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
+export type UpdateMessageActionCreatorType = (body: string) => UpdateMessageActionType
 
-export const dialogsReducer = (state: DialogsType, action: ActionType): DialogsType => {
+export const dialogsReducer = (state: dialogsPageType, action: ActionType): dialogsPageType => {
+    switch (action.type) {
+        case SEND_MESSAGE:
+            let body = state.newMessageBody
+            state.newMessageBody = ''
+            state.messages.push({id: new Date().getTime(), message: body})
+            return state
 
+        case UPDATE_NEW_MESSAGE_TEXT:
+            state.newMessageBody = action.body;
+            return state;
+        default:
+            return state
+    }
 }
 
 //messages

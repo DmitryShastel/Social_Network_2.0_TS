@@ -1,4 +1,5 @@
 import {AddPostActionType, OnPostChangeActionType, profileReducer} from "./profile-reducer";
+import {AddMessageActionType, dialogsReducer, UpdateMessageActionType} from "./dialogs-reducer";
 
 export type StoreType = {
     _state: StateType
@@ -102,6 +103,7 @@ export let store: StoreType = {
     dispatch(action: ActionType) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._callSubscriber(this._state)
 
 

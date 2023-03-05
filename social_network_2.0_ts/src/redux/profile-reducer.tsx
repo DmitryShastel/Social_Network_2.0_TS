@@ -41,7 +41,6 @@ export const profileReducer = (state: ProfilePageType, action: ActionType) :Prof
     }
 }
 
-
 export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
     return {
         type: ADD_POST
