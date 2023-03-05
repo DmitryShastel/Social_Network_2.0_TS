@@ -182,7 +182,7 @@ export  type UpdateNewActionType = {
 export type AddNewPostTextActionCreatorType = () => AddPostActionType
 export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeActionType
 //message
-export type AddNewMessageActionCreatorType = () => AddMessageActionType
+export type SendMessageActionCreatorType = () => AddMessageActionType
 export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
 //news
 export type AddNewActionCreatorType = () => AddNewActionType
@@ -203,12 +203,12 @@ export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType 
     }
 }
 //message
-export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => {
+export const sendMessageActionCreator: SendMessageActionCreatorType = () => {
     return {
         type: SEND_MESSAGE
     }
 }
-export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (body) => {
+export const updateNewMessageBodyActionCreator: UpdateMessageActionCreatorType = (body) => {
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
         body: body
