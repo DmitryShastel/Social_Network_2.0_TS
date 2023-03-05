@@ -112,18 +112,19 @@ export let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText
             this._callSubscriber(this._state)
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage: MessageType = {
-                id: new Date().getTime(),
-                message: this._state.dialogsPage.newMessageBody,
-            }
-            this._state.dialogsPage.messages.push(newMessage)
+        }
+
+        else if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialogsPage.newMessageBody
             this._state.dialogsPage.newMessageBody = ''
+            this._state.dialogsPage.messages.push({id: new Date().getTime(), message: body})
             this._callSubscriber(this._state)
         } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.dialogsPage.newMessageBody = action.body
             this._callSubscriber(this._state)
-        } else if (action.type === ADD_NEW) {
+        }
+
+        else if (action.type === ADD_NEW) {
             let newNew: NewsType = {
                 id: new Date().getTime(),
                 new: this._state.newsPage.newNewsText
@@ -144,7 +145,7 @@ const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 //Message
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 //News
 const ADD_NEW = 'ADD-NEW'
 const UPDATE_NEW = 'UPDATE-NEW'
@@ -160,7 +161,7 @@ export type OnPostChangeActionType = {
 }
 //message
 export type AddMessageActionType = {
-    type: 'ADD-MESSAGE'
+    type: 'SEND-MESSAGE'
 }
 export type UpdateMessageActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT',
@@ -204,7 +205,7 @@ export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType 
 //message
 export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => {
     return {
-        type: ADD_MESSAGE
+        type: SEND_MESSAGE
     }
 }
 export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (body) => {
