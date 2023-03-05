@@ -1,5 +1,6 @@
 import {AddPostActionType, OnPostChangeActionType, profileReducer} from "./profile-reducer";
 import {AddMessageActionType, dialogsReducer, UpdateMessageActionType} from "./dialogs-reducer";
+import {AddNewActionType, newsReducer, UpdateNewActionType} from "./news-reducer";
 
 export type StoreType = {
     _state: StateType
@@ -14,7 +15,7 @@ export type StateType = {
     newsPage: newsPageType
 }
 
-//1
+//1-type of posts
 export type PostsType = {
     id: number
     message: string
@@ -24,7 +25,7 @@ export type ProfilePageType = {
     posts: Array<PostsType>
     newPostText: string
 }
-//2
+//2-type of messages
 export type MessageType = {
     id: number
     message: string
@@ -38,7 +39,7 @@ export type dialogsPageType = {
     messages: Array<MessageType>
     newMessageBody: string
 }
-//3
+//3-type of news
 export type NewsType = {
     id: number
     new: string
@@ -101,83 +102,9 @@ export let store: StoreType = {
         this._callSubscriber = observer
     },
     dispatch(action: ActionType) {
-
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.newsPage = newsReducer(this._state.newsPage, action)
         this._callSubscriber(this._state)
-
-
-        // if (action.type === ADD_POST) {
-        //     let newPost: PostsType =
-        //         {
-        //             id: new Date().getTime(),
-        //             message: this._state.profilePage.newPostText,
-        //             like: 0
-        //         };
-        //     this._state.profilePage.posts.push(newPost)
-        //     this._state.profilePage.newPostText = ''
-        //     this._callSubscriber(this._state)
-        // } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        //     this._state.profilePage.newPostText = action.newPostText
-        //     this._callSubscriber(this._state)
-        // } else if (action.type === SEND_MESSAGE) {
-        //     let body = this._state.dialogsPage.newMessageBody
-        //     this._state.dialogsPage.newMessageBody = ''
-        //     this._state.dialogsPage.messages.push({id: new Date().getTime(), message: body})
-        //     this._callSubscriber(this._state)
-        // } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        //     this._state.dialogsPage.newMessageBody = action.body
-        //     this._callSubscriber(this._state)
-        // } else if (action.type === ADD_NEW) {
-        //     let newNew: NewsType = {
-        //         id: new Date().getTime(),
-        //         new: this._state.newsPage.newNewsText
-        //     }
-        //     this._state.newsPage.news.push(newNew)
-        //     this._state.newsPage.newNewsText = ''
-        //     this._callSubscriber(this._state)
-        // } else if (action.type === UPDATE_NEW) {
-        //     this._state.newsPage.newNewsText = action.newNewsText
-        //     this._callSubscriber(this._state)
-        // }
-    }
-}
-
-
-//News
-const ADD_NEW = 'ADD-NEW'
-const UPDATE_NEW = 'UPDATE-NEW'
-
-//types of actions:
-
-//news
-export type AddNewActionType = {
-    type: 'ADD-NEW'
-}
-export  type UpdateNewActionType = {
-    type: 'UPDATE-NEW',
-    newNewsText: string
-}
-
-
-//types of Action Creators
-
-//news
-export type AddNewActionCreatorType = () => AddNewActionType
-export type UpdateNewActionCreatorType = (text: string) => UpdateNewActionType
-
-
-//Action Creators
-
-//news
-export const addNewActionCreator: AddNewActionCreatorType = () => {
-    return {
-        type: ADD_NEW
-    }
-}
-export const updateNewActionCreator: UpdateNewActionCreatorType = (text) => {
-    return {
-        type: UPDATE_NEW,
-        newNewsText: text
     }
 }

@@ -23,4 +23,3 @@ const renderEntireTree = () => {
 
 renderEntireTree();
 store.subscribe(renderEntireTree)
-

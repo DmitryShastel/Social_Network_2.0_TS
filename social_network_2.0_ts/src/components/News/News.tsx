@@ -1,6 +1,7 @@
 import React from "react";
 import s from './News.module.css'
-import {addNewActionCreator, DispatchType, newsPageType, updateNewActionCreator} from "../../redux/state";
+import {addNewActionCreator, updateNewActionCreator} from "../../redux/news-reducer";
+import {DispatchType, newsPageType} from "../../redux/state";
 
 type NewsPropsType = {
     state: newsPageType

@@ -1,4 +1,4 @@
-import {ActionType, dialogsPageType, DialogsType} from "./state";
+import {ActionType, dialogsPageType} from "./state";
 
 const SEND_MESSAGE = 'SEND-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
@@ -31,7 +31,6 @@ export const dialogsReducer = (state: dialogsPageType, action: ActionType): dial
     }
 }
 
-//messages
 export const sendMessageActionCreator: SendMessageActionCreatorType = () => {
     return {
         type: SEND_MESSAGE
