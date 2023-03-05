@@ -9,12 +9,12 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {DispatchType, StateType, store, StoreType,} from "./redux/state";
+import {DispatchType, StateType, StoreType,} from "./redux/state";
 
 
 type AppType = {
     store: StoreType
-    state: StateType,
+    state: StateType
     dispatch: DispatchType
 }
 

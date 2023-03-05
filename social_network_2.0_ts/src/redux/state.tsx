@@ -110,9 +110,7 @@ export let store: StoreType = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText
             this._callSubscriber(this._state)
-        }
-
-        else if (action.type === SEND_MESSAGE) {
+        } else if (action.type === SEND_MESSAGE) {
             let body = this._state.dialogsPage.newMessageBody
             this._state.dialogsPage.newMessageBody = ''
             this._state.dialogsPage.messages.push({id: new Date().getTime(), message: body})
@@ -120,9 +118,7 @@ export let store: StoreType = {
         } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.dialogsPage.newMessageBody = action.body
             this._callSubscriber(this._state)
-        }
-
-        else if (action.type === ADD_NEW) {
+        } else if (action.type === ADD_NEW) {
             let newNew: NewsType = {
                 id: new Date().getTime(),
                 new: this._state.newsPage.newNewsText
@@ -148,7 +144,7 @@ const ADD_NEW = 'ADD-NEW'
 const UPDATE_NEW = 'UPDATE-NEW'
 
 //types of actions:
-//post
+//posts
 export type AddPostActionType = {
     type: 'ADD-POST'
 }
@@ -156,7 +152,7 @@ export type OnPostChangeActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
     newPostText: string
 }
-//message
+//messages
 export type AddMessageActionType = {
     type: 'SEND-MESSAGE'
 }
@@ -175,10 +171,10 @@ export  type UpdateNewActionType = {
 
 
 //types of Action Creators
-//post
+//posts
 export type AddNewPostTextActionCreatorType = () => AddPostActionType
 export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeActionType
-//message
+//messages
 export type SendMessageActionCreatorType = () => AddMessageActionType
 export type UpdateMessageActionCreatorType = (text: string) => UpdateMessageActionType
 //news
@@ -187,7 +183,7 @@ export type UpdateNewActionCreatorType = (text: string) => UpdateNewActionType
 
 
 //Action Creators
-//post
+//posts
 export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
     return {
         type: ADD_POST
@@ -199,7 +195,7 @@ export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType 
         newPostText: text
     }
 }
-//message
+//messages
 export const sendMessageActionCreator: SendMessageActionCreatorType = () => {
     return {
         type: SEND_MESSAGE
@@ -217,8 +213,8 @@ export const addNewActionCreator: AddNewActionCreatorType = () => {
         type: ADD_NEW
     }
 }
-export const updateNewActionCreator : UpdateNewActionCreatorType = (text) => {
-    return{
+export const updateNewActionCreator: UpdateNewActionCreatorType = (text) => {
+    return {
         type: UPDATE_NEW,
         newNewsText: text
     }

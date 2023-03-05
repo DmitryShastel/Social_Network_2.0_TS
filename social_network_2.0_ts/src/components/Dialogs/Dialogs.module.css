@@ -4,21 +4,40 @@
 }
 
 .dialogsItems {
-    display: grid;
     padding: 10px;
 }
 
-.item {
-    text-decoration: none;
-}
-
-.dialogsItems .active {
-    text-decoration: none;
-    color: red;
-}
-
-.message {
+.messages {
     padding: 10px;
+}
+
+.messages textarea{
+    margin-top: 15px;
+}
+
+.dialog img {
+    padding: 3px 10px 3px 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+}
+
+.dialog {
+    display: flex;
+}
+
+.image {
+    height: 15px;
+    width: 15px;
+    padding-right: 10px;
+    border-radius: 50%;
+}
+
+.imgMessage {
+    height: 15px;
+    width: 15px;
+    padding-right: 10px;
+    border-radius: 50%;
 }
 
 .dialogs button {
@@ -34,8 +53,8 @@
     margin-left: 10px;
 }
 
-.dialogs button:hover{
-    background: rgba(0,0,0,0.6);
+.dialogs button:hover {
+    background: rgba(0, 0, 0, 0.6);
     color: #3a7999;
     box-shadow: inset 0 0 0 3px #3a7999;
     cursor: pointer;

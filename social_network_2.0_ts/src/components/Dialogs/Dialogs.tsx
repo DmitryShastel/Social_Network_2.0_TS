@@ -2,12 +2,7 @@ import React from "react";
 import s from './Dialogs.module.css'
 import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
-import {
-    dialogsPageType,
-    DispatchType,
-    sendMessageActionCreator, StoreType,
-    updateNewMessageBodyActionCreator
-} from "../../redux/state";
+import {sendMessageActionCreator, StoreType, updateNewMessageBodyActionCreator} from "../../redux/state";
 
 
 type DialogsType = {
@@ -39,15 +34,22 @@ export const Dialogs = (props: DialogsType) => {
                 {dialogsElements}
             </div>
 
-            <div className={s.message}>
-                <div>{messagesElements}</div>
-            </div>
-            <div>
-                <textarea
-                    ref={newMessageElement}
-                    value={newMessageBody}
-                    onChange={onNewMessageChange}></textarea>
-                <button onClick={onSendMessageClick}>Add new message</button>
+            <div className={s.messages}>
+                {messagesElements}
+
+                <div>
+
+                    <div><textarea
+                        ref={newMessageElement}
+                        value={newMessageBody}
+                        onChange={onNewMessageChange}
+                        placeholder='Enter your message'>
+                </textarea></div>
+
+                    <div>
+                        <button onClick={onSendMessageClick}>Add new message</button>
+                    </div>
+                </div>
             </div>
         </div>
     )
