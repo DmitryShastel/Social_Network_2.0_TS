@@ -35,7 +35,7 @@ export type DialogsType = {
 export type dialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
-    newMessageText: string
+    newMessageBody: string
 }
 //3
 export type NewsType = {
@@ -79,7 +79,7 @@ export let store = {
                 {id: 2, message: 'buy'},
                 {id: 3, message: 'buy now'}
             ],
-            newMessageText: '',
+            newMessageBody: '',
         },
         newsPage: {
             news: [
@@ -115,13 +115,13 @@ export let store = {
         } else if (action.type === ADD_MESSAGE) {
             let newMessage: MessageType = {
                 id: new Date().getTime(),
-                message: this._state.dialogsPage.newMessageText,
+                message: this._state.dialogsPage.newMessageBody,
             }
             this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
+            this._state.dialogsPage.newMessageBody = ''
             this._callSubscriber(this._state)
         } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.newMessageText
+            this._state.dialogsPage.newMessageBody = action.newMessageBody
             this._callSubscriber(this._state)
         } else if (action.type === ADD_NEW) {
             let newNew: NewsType = {
@@ -164,7 +164,7 @@ export type AddMessageActionType = {
 }
 export type UpdateMessageActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT',
-    newMessageText: string
+    newMessageBody: string
 }
 //news
 export type AddNewActionType = {
@@ -210,7 +210,7 @@ export const addNewMessageActionCreator: AddNewMessageActionCreatorType = () => 
 export const updateNewMessageTextActionCreator: UpdateMessageActionCreatorType = (text) => {
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessageText: text
+        newMessageBody: text
     }
 }
 //news

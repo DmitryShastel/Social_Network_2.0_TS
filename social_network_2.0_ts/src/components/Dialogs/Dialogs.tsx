@@ -20,7 +20,7 @@ export const Dialogs = (props: DialogsType) => {
     let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
     let messagesElements = props.state.messages.map(m => <Message id={m.id} message={m.message}/>)
     let newMessageElement = React.createRef<HTMLTextAreaElement>()
-    let newMessageText = props.state.newMessageText
+    let newMessageText = props.state.newMessageBody
 
     let addMessage = () => {
         props.dispatch(addNewMessageActionCreator())
