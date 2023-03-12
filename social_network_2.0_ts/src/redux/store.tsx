@@ -1,6 +1,6 @@
-import {AddPostActionType, OnPostChangeActionType, profileReducer} from "./profile-reducer";
-import {AddMessageActionType, dialogsReducer, UpdateMessageActionType} from "./dialogs-reducer";
-import {AddNewActionType, newsReducer, UpdateNewActionType} from "./news-reducer";
+import {AddMessageActionType, UpdateMessageActionType} from "./dialogs-reducer";
+import {AddNewActionType, UpdateNewActionType} from "./news-reducer";
+import {AddPostActionType, OnPostChangeActionType} from "./profile-reducer";
 
 export type StoreType = {
     _state: StateType
@@ -51,8 +51,8 @@ export type newsPageType = {
 
 
 export type ActionType =
-    // AddPostActionType
-    // | OnPostChangeActionType
+    AddPostActionType
+    | OnPostChangeActionType
     | AddMessageActionType
     | UpdateMessageActionType
     | AddNewActionType
