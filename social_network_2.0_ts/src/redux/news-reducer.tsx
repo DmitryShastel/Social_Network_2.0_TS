@@ -1,4 +1,4 @@
-import {ActionType, newsPageType, NewsType} from "./state";
+import {ActionType, newsPageType, NewsType} from "./store";
 
 const ADD_NEW = 'ADD-NEW'
 const UPDATE_NEW = 'UPDATE-NEW'

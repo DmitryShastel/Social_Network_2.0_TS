@@ -2,7 +2,7 @@ import {
     ActionType,
     PostsType,
     ProfilePageType,
-} from "./state";
+} from "./store";
 
 
 export type AddPostActionType = {
