@@ -61,50 +61,50 @@ export type ActionType =
 export type DispatchType = (action: ActionType) => void
 
 
-export let store: StoreType = {
-    _state: {
-        profilePage: {
-            posts: [
-                {id: 1, message: 'Hi how are you', like: 15},
-                {id: 2, message: 'It is my first post', like: 23}
-            ],
-            newPostText: '',
-        },
-        dialogsPage: {
-            dialogs: [
-                {id: 1, name: 'Dima'},
-                {id: 2, name: 'Sasha'},
-                {id: 3, name: 'Alex'}
-            ],
-
-            messages: [
-                {id: 10, message: 'hi'},
-                {id: 2, message: 'buy'},
-                {id: 3, message: 'buy now'}
-            ],
-            newMessageBody: '',
-        },
-        newsPage: {
-            news: [
-                {id: 1, new: 'new #1'},
-                {id: 1, new: 'new #2'},
-                {id: 1, new: 'new #3'}
-            ],
-            newNewsText: ''
-        }
-    },
-    getState() {
-        return this._state
-    },
-    _callSubscriber() {
-    },
-    subscribe(observer) {
-        this._callSubscriber = observer
-    },
-    dispatch(action: ActionType) {
-        // this._state.profilePage = profileReducer(this._state.profilePage, action)
-        // this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        // this._state.newsPage = newsReducer(this._state.newsPage, action)
-        // this._callSubscriber(this._state)
-    }
-}
+// export let store: StoreType = {
+//     _state: {
+//         profilePage: {
+//             posts: [
+//                 {id: 1, message: 'Hi how are you', like: 15},
+//                 {id: 2, message: 'It is my first post', like: 23}
+//             ],
+//             newPostText: '',
+//         },
+//         dialogsPage: {
+//             dialogs: [
+//                 {id: 1, name: 'Dima'},
+//                 {id: 2, name: 'Sasha'},
+//                 {id: 3, name: 'Alex'}
+//             ],
+//
+//             messages: [
+//                 {id: 10, message: 'hi'},
+//                 {id: 2, message: 'buy'},
+//                 {id: 3, message: 'buy now'}
+//             ],
+//             newMessageBody: '',
+//         },
+//         newsPage: {
+//             news: [
+//                 {id: 1, new: 'new #1'},
+//                 {id: 1, new: 'new #2'},
+//                 {id: 1, new: 'new #3'}
+//             ],
+//             newNewsText: ''
+//         }
+//     },
+//     getState() {
+//         return this._state
+//     },
+//     _callSubscriber() {
+//     },
+//     subscribe(observer) {
+//         this._callSubscriber = observer
+//     },
+//     dispatch(action: ActionType) {
+//         this._state.profilePage = profileReducer(this._state.profilePage, action)
+//         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+//         this._state.newsPage = newsReducer(this._state.newsPage, action)
+//         this._callSubscriber(this._state)
+//     }
+// }
