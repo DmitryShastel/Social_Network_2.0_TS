@@ -15,19 +15,23 @@ export  type UpdateNewActionType = {
 export type AddNewActionCreatorType = () => AddNewActionType
 export type UpdateNewActionCreatorType = (text: string) => UpdateNewActionType
 
-let initialState  = {
-    newsPage: {
-        news: [
-            {id: 1, new: 'new #1'},
-            {id: 1, new: 'new #2'},
-            {id: 1, new: 'new #3'}
-        ],
-        newNewsText: ''
-    }
+type NewsReducerType = {
+    news: Array<NewsType>
+    newNewsText: string
+}
+
+let initialState = {
+    news: [
+        {id: 1, new: 'new #1'},
+        {id: 1, new: 'new #2'},
+        {id: 1, new: 'new #3'}
+    ],
+    newNewsText: ''
+
 }
 
 
-export const newsReducer = (state = initialState, action: ActionType): newsPageType => {
+export const newsReducer = (state: NewsReducerType = initialState, action: ActionType): newsPageType => {
     switch (action.type) {
         case ADD_NEW:
             let newNew: NewsType = {
