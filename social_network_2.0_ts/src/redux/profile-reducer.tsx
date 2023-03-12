@@ -1,10 +1,9 @@
 import {
-    ActionType,
     PostsType,
     ProfilePageType,
 } from "./store";
 
-
+type ActionType = AddPostActionType | OnPostChangeActionType
 export type AddPostActionType = {
     type: 'ADD-POST'
 }
@@ -19,18 +18,21 @@ export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeA
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-
-let initialState  = {
-    profilePage: {
-        posts: [
-            {id: 1, message: 'Hi how are you', like: 15},
-            {id: 2, message: 'It is my first post', like: 23}
-        ],
-        newPostText: '',
-    },
+type ProfileReducerType = {
+    posts: Array<PostsType>
+    newPostText: string
 }
 
-export const profileReducer = (state = initialState, action: ActionType) :ProfilePageType => {
+
+let initialState = {
+    posts: [
+        {id: 1, message: 'Hi how are you', like: 15},
+        {id: 2, message: 'It is my first post', like: 23}
+    ],
+    newPostText: '',
+}
+
+export const profileReducer = (state: ProfileReducerType = initialState, action: ActionType): ProfilePageType => {
     switch (action.type) {
         case ADD_POST:
             let newPost: PostsType =

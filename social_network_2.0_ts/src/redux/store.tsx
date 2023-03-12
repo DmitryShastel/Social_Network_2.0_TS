@@ -51,8 +51,8 @@ export type newsPageType = {
 
 
 export type ActionType =
-    AddPostActionType
-    | OnPostChangeActionType
+    // AddPostActionType
+    // | OnPostChangeActionType
     | AddMessageActionType
     | UpdateMessageActionType
     | AddNewActionType
