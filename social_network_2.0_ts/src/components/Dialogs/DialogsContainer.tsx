@@ -4,11 +4,11 @@ import {StoreType} from "../../redux/store";
 import {Dialogs} from "./Dialogs";
 
 
-type DialogsType = {
+type DialogsContainerType = {
     store: StoreType
 }
 
-export const DialogsContainer = (props: DialogsType) => {
+export const DialogsContainer = (props: DialogsContainerType) => {
 
     let state = props.store.getState().dialogsPage
 
@@ -18,11 +18,14 @@ export const DialogsContainer = (props: DialogsType) => {
     }
 
     let onNewMessageChange = (body: string) => {
-        let action = updateNewMessageBodyActionCreator(body)
-        props.store.dispatch(action)
+        props.store.dispatch(updateNewMessageBodyActionCreator(body))
     }
 
     return (
-       <Dialogs  updateNewMessageBody={onNewMessageChange} onSendMessageClick={onSendMessageClick}/>
+        <Dialogs
+            updateNewMessageBody={onNewMessageChange}
+            onSendMessageClick={onSendMessageClick}
+            dialogsPage={state}
+        />
     )
 }
