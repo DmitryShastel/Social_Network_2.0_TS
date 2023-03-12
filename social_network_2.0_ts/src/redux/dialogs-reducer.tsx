@@ -15,7 +15,25 @@ export type UpdateMessageActionType = {
 export type SendMessageActionCreatorType = () => AddMessageActionType
 export type UpdateMessageActionCreatorType = (body: string) => UpdateMessageActionType
 
-export const dialogsReducer = (state: dialogsPageType, action: ActionType): dialogsPageType => {
+
+let initialState  = {
+    dialogsPage: {
+        dialogs: [
+            {id: 1, name: 'Dima'},
+            {id: 2, name: 'Sasha'},
+            {id: 3, name: 'Alex'}
+        ],
+
+        messages: [
+            {id: 10, message: 'hi'},
+            {id: 2, message: 'buy'},
+            {id: 3, message: 'buy now'}
+        ],
+        newMessageBody: '',
+    },
+}
+
+export const dialogsReducer = (state = initialState, action: ActionType): dialogsPageType => {
     switch (action.type) {
         case SEND_MESSAGE:
             let body = state.newMessageBody

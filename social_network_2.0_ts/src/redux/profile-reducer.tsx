@@ -19,7 +19,18 @@ export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeA
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-export const profileReducer = (state: ProfilePageType, action: ActionType) :ProfilePageType => {
+
+let initialState  = {
+    profilePage: {
+        posts: [
+            {id: 1, message: 'Hi how are you', like: 15},
+            {id: 2, message: 'It is my first post', like: 23}
+        ],
+        newPostText: '',
+    },
+}
+
+export const profileReducer = (state = initialState, action: ActionType) :ProfilePageType => {
     switch (action.type) {
         case ADD_POST:
             let newPost: PostsType =
