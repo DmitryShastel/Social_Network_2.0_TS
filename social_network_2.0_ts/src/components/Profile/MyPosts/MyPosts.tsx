@@ -9,6 +9,8 @@ type MyPostType = {
     posts: Array<PostsType>
     newPostText: string
     dispatch: DispatchType
+    updateNewPostText: (text: string) => void
+    addPost: () => void
 }
 
 export const MyPosts = (props: MyPostType) => {
@@ -17,14 +19,14 @@ export const MyPosts = (props: MyPostType) => {
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
-    const addPost = () => {
+    const onAddPost = () => {
         props.dispatch(addNewPostTextActionCreator())
     }
 
     const onPostChange = () => {
         let text = newPostElement.current ? newPostElement.current.value : ''
-        let action = updateNewPostTextActionCreator(text)
-        props.dispatch(action)
+        props.updateNewPostText(text)
+
     }
 
 
@@ -39,7 +41,7 @@ export const MyPosts = (props: MyPostType) => {
                     onChange={onPostChange}
                 />
                 <div className={s.button}>
-                    <button onClick={addPost}>Add Post</button>
+                    <button onClick={onAddPost}>Add Post</button>
                 </div>
             </div>
             {postElements}

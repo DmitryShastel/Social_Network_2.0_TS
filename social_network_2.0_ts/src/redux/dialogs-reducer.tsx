@@ -14,7 +14,7 @@ export type UpdateMessageActionType = {
 export type SendMessageActionCreatorType = () => AddMessageActionType
 export type UpdateMessageActionCreatorType = (body: string) => UpdateMessageActionType
 
-type ActionType = AddMessageActionType | UpdateMessageActionType
+export type ActionType = AddMessageActionType | UpdateMessageActionType
 
 
 type DialogsReducerType = {
