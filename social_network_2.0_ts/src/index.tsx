@@ -3,29 +3,24 @@ import './index.css';
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import {store} from "./redux/redux-store";
-import {StateType} from "./redux/store";
 import {StoreContext} from './redux/StoreContext';
 
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
-const renderEntireTree = (state: StateType) => {
-
+export const rerenderEntireTree = () => {
     root.render(
         <React.StrictMode>
             <StoreContext.Provider value={store}>
                 <App/>
             </StoreContext.Provider>
-        </React.StrictMode>
+        </React.StrictMode>,
     );
 }
 
-// renderEntireTree();
-// store.subscribe(renderEntireTree)
+// @ts-ignore
+const root = ReactDOM.createRoot(document.getElementById('root'))
 
-renderEntireTree(store.getState());
+
+rerenderEntireTree();
 store.subscribe(() => {
-    let state = store.getState()
-    renderEntireTree(state)
-})
+    rerenderEntireTree()
+});
