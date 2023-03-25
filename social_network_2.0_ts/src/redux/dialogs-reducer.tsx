@@ -1,5 +1,3 @@
-import { DialogsType, MessageType} from "./store";
-
 const SEND_MESSAGE = 'SEND-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
@@ -21,6 +19,15 @@ type dialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
     newMessageBody: string
+}
+
+export type MessageType = {
+    id: number
+    message: string
+}
+export type DialogsType = {
+    id: number
+    name: string
 }
 
 type DialogsReducerType = {

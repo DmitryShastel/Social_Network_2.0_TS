@@ -26,11 +26,11 @@ export type ProfilePageType = {
     newPostText: string
 }
 //2-type of messages
-export type MessageType = {
+ type MessageType = {
     id: number
     message: string
 }
-export type DialogsType = {
+ type DialogsType = {
     id: number
     name: string
 }
