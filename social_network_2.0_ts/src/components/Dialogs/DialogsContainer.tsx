@@ -36,6 +36,16 @@ export const DialogsContainer: React.FC = () => {
 }
 
 
+const mapStateToProps = () => {
+    return {
 
+    }
+}
+
+const mapDispatchToProps = () => {
+    return {
+
+    }
+}
 
 const SuperDialogsContainer = connect ()(Dialogs)
