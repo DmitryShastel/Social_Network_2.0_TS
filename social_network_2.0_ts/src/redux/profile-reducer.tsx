@@ -13,19 +13,10 @@ export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeA
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-type ProfileReducerType = {
-    posts: Array<PostsType>
-    newPostText: string
-}
-
 export type PostsType = {
     id: number
     message: string
     like: number
-}
-export type ProfilePageType = {
-    posts: Array<PostsType>
-    newPostText: string
 }
 
 

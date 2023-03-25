@@ -1,11 +1,21 @@
 import React from "react";
 import s from './News.module.css'
-import {newsPageType} from "../../redux/store";
+
 
 type NewsPropsType = {
     updateNewText: (text: string) => void
     addNew: () => void
     newsPage: newsPageType
+}
+
+export type NewsType = {
+    id: number
+    new: string
+}
+
+type newsPageType = {
+    news: Array<NewsType>
+    newNewsText: string
 }
 
 export const News = (props: NewsPropsType) => {

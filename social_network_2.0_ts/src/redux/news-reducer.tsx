@@ -1,4 +1,5 @@
-import {ActionType, newsPageType, NewsType} from "./store";
+import {NewsType} from "../components/News/News";
+
 
 const ADD_NEW = 'ADD-NEW'
 const UPDATE_NEW = 'UPDATE-NEW'
@@ -31,7 +32,7 @@ let initialState = {
 }
 
 
-export const newsReducer = (state: NewsReducerType = initialState, action: ActionType): newsPageType => {
+export const newsReducer = (state: NewsReducerType = initialState, action: any) => {
     switch (action.type) {
         case ADD_NEW:
             let newNew: NewsType = {

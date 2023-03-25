@@ -1,13 +1,13 @@
 import React from "react";
 import {addNewActionCreator, updateNewActionCreator} from "../../redux/news-reducer";
-import {StoreType} from "../../redux/store";
+
 import {News} from "./News";
 
-type NewsContainerType = {
-    store: StoreType
-}
+// type NewsContainerType = {
+//     store: StoreType
+// }
 
-export const NewsContainer = (props: NewsContainerType) => {
+export const NewsContainer = (props: any) => {
 
     let state = props.store.getState().newsPage
 

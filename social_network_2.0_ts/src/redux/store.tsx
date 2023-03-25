@@ -2,14 +2,14 @@ import {AddMessageActionType, UpdateMessageActionType} from "./dialogs-reducer";
 import {AddNewActionType, UpdateNewActionType} from "./news-reducer";
 import {AddPostActionType, OnPostChangeActionType} from "./profile-reducer";
 
-export type StoreType = {
+ type StoreType = {
     _state: StateType
     getState: () => StateType
     _callSubscriber: (arg: StateType) => void
     subscribe: (observer: () => void) => void
     dispatch: DispatchType
 }
-export type StateType = {
+type StateType = {
     profilePage: ProfilePageType
     dialogsPage: dialogsPageType
     newsPage: newsPageType
@@ -40,17 +40,17 @@ type ProfilePageType = {
     newMessageBody: string
 }
 //3-type of news
-export type NewsType = {
+type NewsType = {
     id: number
     new: string
 }
-export type newsPageType = {
+type newsPageType = {
     news: Array<NewsType>
     newNewsText: string
 }
 
 
-export type ActionType =
+type ActionType =
     AddPostActionType
     | OnPostChangeActionType
     | AddMessageActionType
