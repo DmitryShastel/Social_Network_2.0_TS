@@ -11,9 +11,9 @@ type MyPostType = {
     addPost: () => void
 }
 
-export const MyPosts = (props: MyPostType) => {
+export const MyPosts = (props: any) => {
 
-    let postElements = props.posts.map(p => <Post id={p.id} message={p.message} like={p.like}/>)
+    let postElements = props.posts.map((p: any) => <Post id={p.id} message={p.message} like={p.like}/>)
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 

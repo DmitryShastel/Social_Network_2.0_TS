@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch: any) => {
         onSendMessageClick: () => {
             dispatch(sendMessageActionCreator())
         },
-        onNewMessageChange: (body: any) => {
+        updateNewMessageBody: (body: any) => {
             dispatch(updateNewMessageBodyActionCreator(body))
         }
     }
