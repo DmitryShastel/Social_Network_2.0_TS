@@ -9,4 +9,6 @@ export const reducers = combineReducers({
     newsPage: newsReducer
 })
 
+export type AppStateType = ReturnType<typeof reducers>
+
 export const store = createStore(reducers)
