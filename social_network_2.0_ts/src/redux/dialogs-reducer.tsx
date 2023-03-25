@@ -68,7 +68,7 @@ export const sendMessageActionCreator: SendMessageActionCreatorType = () => {
         type: SEND_MESSAGE
     }
 }
-export const updateNewMessageBodyActionCreator: UpdateMessageActionCreatorType = (body) => {
+export const updateNewMessageBodyActionCreator: UpdateMessageActionCreatorType = (body: string) => {
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
         body: body

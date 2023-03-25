@@ -7,6 +7,7 @@ import {
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
+import {Dispatch} from "redux";
 
 
 // export const DialogsContainer: React.FC = () => {
@@ -43,18 +44,23 @@ type MapStatePropsType = {
     dialogsPage: InitialStateType
 }
 
+type MapStateDispatchType = {
+    onSendMessageClick: () => void
+    updateNewMessageBody: (body: any) => void
+}
+
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsPage: state.dialogsPage
     }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch): MapStateDispatchType => {
     return {
         onSendMessageClick: () => {
             dispatch(sendMessageActionCreator())
         },
-        updateNewMessageBody: (body: any) => {
+        updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyActionCreator(body))
         }
     }
