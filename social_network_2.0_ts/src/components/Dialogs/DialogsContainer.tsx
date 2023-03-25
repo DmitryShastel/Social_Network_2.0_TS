@@ -1,5 +1,9 @@
 import React from "react";
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/dialogs-reducer";
+import {
+    InitialStateType,
+    sendMessageActionCreator,
+    updateNewMessageBodyActionCreator
+} from "../../redux/dialogs-reducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
@@ -35,8 +39,11 @@ import {AppStateType} from "../../redux/redux-store";
 //     )
 // }
 
+type MapStatePropsType = {
+    dialogsPage: InitialStateType
+}
 
-const mapStateToProps = (state: AppStateType) => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsPage: state.dialogsPage
     }

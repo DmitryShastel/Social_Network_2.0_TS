@@ -15,7 +15,7 @@ export type UpdateMessageActionCreatorType = (body: string) => UpdateMessageActi
 export type ActionType = AddMessageActionType | UpdateMessageActionType
 
 
-type dialogsPageType = {
+export type dialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
     newMessageBody: string
@@ -30,28 +30,24 @@ export type DialogsType = {
     name: string
 }
 
-type DialogsReducerType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessageType>
-    newMessageBody: string
-}
-
 let initialState = {
     dialogs: [
         {id: 1, name: 'Dima'},
         {id: 2, name: 'Sasha'},
         {id: 3, name: 'Alex'}
-    ],
+    ] as Array<DialogsType>,
 
     messages: [
         {id: 10, message: 'hi'},
         {id: 2, message: 'buy'},
         {id: 3, message: 'buy now'}
-    ],
+    ] as Array<MessageType>,
     newMessageBody: '',
 }
 
-export const dialogsReducer = (state: DialogsReducerType = initialState, action: ActionType): dialogsPageType => {
+export type InitialStateType = typeof initialState
+
+export const dialogsReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case SEND_MESSAGE:
             let body = state.newMessageBody
