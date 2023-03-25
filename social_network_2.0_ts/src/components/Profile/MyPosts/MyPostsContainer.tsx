@@ -4,36 +4,6 @@ import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 
 
-// export const MyPostsContainer: React.FC = () => {
-//
-//     return (
-//         <StoreContext.Consumer>
-//             {
-//                 (store) => {
-//
-//                     let state = store.getState()
-//
-//                     const addPost = () => {
-//                         store.dispatch(addNewPostTextActionCreator())
-//                     }
-//
-//                     const onPostChange = (text: string) => {
-//                         let action = updateNewPostTextActionCreator(text)
-//                         store.dispatch(action)
-//                     }
-//
-//                     return <MyPosts
-//                         posts={state.profilePage.posts}
-//                         newPostText={state.profilePage.newPostText}
-//                         updateNewPostText={onPostChange}
-//                         addPost={addPost}/>
-//                 }
-//             }
-//         </StoreContext.Consumer>
-//
-//     )
-// }
-
 
 const mapStateToProps = (state: any) => {
     return {

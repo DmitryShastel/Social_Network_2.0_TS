@@ -5,7 +5,6 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {dialogsPageType} from "../../redux/dialogs-reducer";
 
 
-
 type DialogsType = {
     updateNewMessageBody: (body: string) => void
     onSendMessageClick: () => void

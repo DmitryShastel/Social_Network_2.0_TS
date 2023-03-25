@@ -16,12 +16,12 @@ export type StateType = {
 }
 
 //1-type of posts
-export type PostsType = {
+type PostsType = {
     id: number
     message: string
     like: number
 }
-export type ProfilePageType = {
+type ProfilePageType = {
     posts: Array<PostsType>
     newPostText: string
 }
@@ -58,7 +58,7 @@ export type ActionType =
     | AddNewActionType
     | UpdateNewActionType
 
-export type DispatchType = (action: ActionType) => void
+type DispatchType = (action: ActionType) => void
 
 
 // export let store: StoreType = {
