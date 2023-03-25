@@ -1,7 +1,7 @@
 import React from "react";
 import {addNewPostTextActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import {MyPosts} from "./MyPosts";
-import {StoreContext} from "../../../redux/StoreContext";
+
 
 
 export const MyPostsContainer: React.FC = () => {
