@@ -1,4 +1,4 @@
-import {dialogsPageType, DialogsType, MessageType} from "./store";
+import { DialogsType, MessageType} from "./store";
 
 const SEND_MESSAGE = 'SEND-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
@@ -16,6 +16,12 @@ export type UpdateMessageActionCreatorType = (body: string) => UpdateMessageActi
 
 export type ActionType = AddMessageActionType | UpdateMessageActionType
 
+
+type dialogsPageType = {
+    dialogs: Array<DialogsType>
+    messages: Array<MessageType>
+    newMessageBody: string
+}
 
 type DialogsReducerType = {
     dialogs: Array<DialogsType>

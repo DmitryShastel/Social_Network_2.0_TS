@@ -34,7 +34,7 @@ export type DialogsType = {
     id: number
     name: string
 }
-export type dialogsPageType = {
+ type dialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessageType>
     newMessageBody: string
