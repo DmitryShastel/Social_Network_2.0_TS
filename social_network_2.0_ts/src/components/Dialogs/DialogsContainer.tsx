@@ -2,6 +2,7 @@ import React from "react";
 import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/dialogs-reducer";
 
 import {Dialogs} from "./Dialogs";
+import {connect} from "react-redux";
 
 
 export const DialogsContainer: React.FC = () => {
@@ -34,4 +35,7 @@ export const DialogsContainer: React.FC = () => {
     )
 }
 
-const 
+
+
+
+const SuperDialogsContainer = connect ()(Dialogs)
