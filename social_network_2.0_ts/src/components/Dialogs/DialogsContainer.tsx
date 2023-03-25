@@ -1,6 +1,6 @@
 import React from "react";
 import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../redux/dialogs-reducer";
-import {StoreContext} from "../../redux/StoreContext";
+
 import {Dialogs} from "./Dialogs";
 
 
@@ -33,3 +33,5 @@ export const DialogsContainer: React.FC = () => {
         </StoreContext.Consumer>
     )
 }
+
+const 

@@ -3,15 +3,15 @@ import './index.css';
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import {store} from "./redux/redux-store";
-import {StoreContext} from './redux/StoreContext';
+import {Provider} from "react-redux";
 
 
-export const rerenderEntireTree = () => {
+export const rerenderEntireTree = (store: any) => {
     root.render(
         <React.StrictMode>
-            <StoreContext.Provider value={store}>
+            <Provider store={store}>
                 <App/>
-            </StoreContext.Provider>
+            </Provider>
         </React.StrictMode>,
     );
 }
@@ -20,7 +20,7 @@ export const rerenderEntireTree = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 
-rerenderEntireTree();
+rerenderEntireTree(store);
 store.subscribe(() => {
-    rerenderEntireTree()
+    rerenderEntireTree(store)
 });
