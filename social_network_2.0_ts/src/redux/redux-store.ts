@@ -2,7 +2,6 @@ import {combineReducers, createStore} from "redux";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {newsReducer} from "./news-reducer";
-import {StoreType} from "./store";
 
 export const reducers = combineReducers({
     profilePage: profileReducer,
@@ -10,4 +9,4 @@ export const reducers = combineReducers({
     newsPage: newsReducer
 })
 
-export const store: StoreType = createStore(reducers)
+export const store = createStore(reducers)

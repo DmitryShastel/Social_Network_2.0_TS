@@ -4,7 +4,6 @@ import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 
 
-
 // export const MyPostsContainer: React.FC = () => {
 //
 //     return (
@@ -49,10 +48,11 @@ const mapDispatchToProps = (dispatch: any) => {
             dispatch(addNewPostTextActionCreator())
         },
         updateNewPostText: (text: any) => {
-            dispatch(updateNewPostTextActionCreator(text))
+            let action = updateNewPostTextActionCreator(text)
+            dispatch(action)
         }
     }
 }
 
 
-export const MyPostsContainer = connect (mapStateToProps, mapDispatchToProps)(MyPosts)
+export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
