@@ -15,6 +15,20 @@ export type UnfollowActionType = {
 
 export type ActionType = FollowActionType | UnfollowActionType
 
+export type UserType = {
+    id: number
+    photoUrl: string
+    fullName: string
+    followed: boolean
+    status: string
+    location: LocationType
+}
+
+export type LocationType = {
+    country: string
+    city: string
+}
+
 let initialState = {
     users: [
         {
@@ -25,7 +39,7 @@ let initialState = {
             status: 'i am a boss',
             location: {country: 'Belarus', city: 'Minsk'},
         }
-    ]
+    ] as Array<UserType>
 }
 
 export type InitialStateType = typeof initialState
