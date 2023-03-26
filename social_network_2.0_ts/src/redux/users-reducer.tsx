@@ -1,8 +1,10 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
+const SET_USERS = 'SET_USERS'
 
-export type FollowACType = (userId: any) => FollowActionType
-export type UnfollowACType = (userId: any) => UnfollowActionType
+export type FollowACType = (userId: number) => FollowActionType
+export type UnfollowACType = (userId: number) => UnfollowActionType
+export type SetUsersACType = (users: Array<UserType>) => SetUsersActionType
 
 export type FollowActionType = {
     type: 'FOLLOW',
@@ -13,7 +15,12 @@ export type UnfollowActionType = {
     userId: number
 }
 
-export type ActionType = FollowActionType | UnfollowActionType
+export type SetUsersActionType = {
+    type: 'SET_USERS',
+    users: Array<UserType>
+}
+
+export type ActionType = FollowActionType | UnfollowActionType | SetUsersActionType
 
 export type UserType = {
     id: number
@@ -44,7 +51,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState
 
-export const dialogsReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
+export const userReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case FOLLOW:
             return {
@@ -71,20 +78,33 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: A
                     return u
                 })
             }
+        case SET_USERS:
+            return {
+                ...state,
+                users: action.users
+            }
+
         default:
             return state
     }
 }
 
-export const followAC: FollowACType = (userId: any) => {
+export const followAC: FollowACType = (userId: number) => {
     return {
         type: FOLLOW,
         userId
     }
 }
-export const unfollowAC: UnfollowACType = (userId: any) => {
+export const unfollowAC: UnfollowACType = (userId: number) => {
     return {
         type: UNFOLLOW,
         userId
+    }
+}
+
+export const setUsersAC: SetUsersACType = (users: Array<UserType>) => {
+    return {
+        type: SET_USERS,
+        users
     }
 }
