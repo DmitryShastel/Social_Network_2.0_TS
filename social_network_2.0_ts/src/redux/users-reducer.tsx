@@ -43,7 +43,7 @@ let initialState = {
             photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
             fullName: 'Dima',
             followed: true,
-            status: 'i am a boss',
+            status: 'I am a boss',
             location: {country: 'Belarus', city: 'Minsk'},
         }
     ] as Array<UserType>
