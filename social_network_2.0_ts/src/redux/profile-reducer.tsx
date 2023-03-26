@@ -44,11 +44,10 @@ export const profileReducer = (state: initialStateType = initialState, action: A
             stateCopy.newPostText = ''
             return stateCopy;
         }
-        case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newPostText
-            return stateCopy;
-        }
+        case UPDATE_NEW_POST_TEXT:
+           return{...state,
+               newPostText: action.newPostText
+           }
 
         default:
             return state
