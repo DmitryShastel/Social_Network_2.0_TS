@@ -38,22 +38,22 @@ export type LocationType = {
 
 let initialState = {
     users: [
-        {
-            id: 1,
-            photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
-            fullName: 'Dima',
-            followed: false,
-            status: 'I am a boss',
-            location: {country: 'Belarus', city: 'Minsk'},
-        },
-        {
-            id: 2,
-            photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
-            fullName: 'Vasa',
-            followed: true,
-            status: 'I am a boss too',
-            location: {country: 'Russia', city: 'Moscow'},
-        },
+        // {
+        //     id: 1,
+        //     photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
+        //     fullName: 'Dima',
+        //     followed: false,
+        //     status: 'I am a boss',
+        //     location: {country: 'Belarus', city: 'Minsk'},
+        // },
+        // {
+        //     id: 2,
+        //     photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
+        //     fullName: 'Vasa',
+        //     followed: true,
+        //     status: 'I am a boss too',
+        //     location: {country: 'Russia', city: 'Moscow'},
+        // },
 
     ] as Array<UserType>
 }
