@@ -3,6 +3,9 @@ import {UserType} from "../../redux/users-reducer";
 
 type UsersPropsType = {
     users: Array<UserType>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    setUser: (users: Array<UserType>) => void
 }
 
 
@@ -10,14 +13,21 @@ export const Users = (props: UsersPropsType) => {
     return (
         <div>
             {
-                props.users.map( u =>   <div>
+                props.users.map(u => <div key={u.id}>
                     <span>
-                        <img src={u.photoUrl}/>
                         <div>
-                            <button>Follow</button>
+                              <img src={u.photoUrl}/>
+                        </div>
+                        <div>
+                            {
+                                u.followed
+                                    ? <button onClick={() => {props.follow(u.id)} }>Follow</button>
+                                    : <button onClick={() => {props.unfollow(u.id)} } >Unfollow</button>
+                            }
+
                         </div>
                     </span>
-                    <span>
+                        <span>
                         <span>
                             <div>{u.fullName}</div>
                             <div>{u.status}</div>
@@ -27,8 +37,8 @@ export const Users = (props: UsersPropsType) => {
                             <div>{u.location.city}</div>
                         </span>
                     </span>
-                </div>
-              )}
+                    </div>
+                )}
         </div>
     )
 }
