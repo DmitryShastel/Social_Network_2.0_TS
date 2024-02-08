@@ -1,49 +1,50 @@
 import React from "react";
 import {UserType} from "../../redux/users-reducer";
 import s from './Users.module.css'
+import userPhoto from '../../accets/image/userPhoto.png'
 
 type UsersPropsType = {
     users: Array<UserType>
     follow: (userId: number) => void
     unfollow: (userId: number) => void
     setUser: (users: Array<UserType>) => void
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+    changedPage: (pageNumber: any) => void
 }
 
 
 export const Users = (props: UsersPropsType) => {
 
-    if (props.users.length === 0) {
-        props.setUser([
-
-                {
-                    id: 1,
-                    photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
-                    fullName: 'Dima',
-                    followed: false,
-                    status: 'I am a boss',
-                    location: {country: 'Belarus', city: 'Minsk'},
-                },
-                {
-                    id: 2,
-                    photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
-                    fullName: 'Vasa',
-                    followed: true,
-                    status: 'I am a boss too',
-                    location: {country: 'Russia', city: 'Moscow'},
-                },
-
-            ] as Array<UserType>
-        )
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
     }
 
+
     return (
-        <div>
+        <div className={s.wrapper}>
+            <div className={s.content}>
+                {pages.map(p => {
+                    //@ts-ignore
+                    return <span className={props.currentPage === p && s.selectedPage}
+                                 onClick={() => {
+                                     props.changedPage(p)
+                                 }}
+                    >{p},</span>
+                })}
+            </div>
             {
                 props.users.map(u => <div key={u.id}>
 
                     <span>
                         <div>
-                        <img src={u.photoUrl} className={s.userPhoto}/>
+                        <img src={u.photos.small != null
+                            ? u.photos.small
+                            : userPhoto
+                        } className={s.userPhoto}/>
                     </div>
                         <div>
                             {
@@ -60,13 +61,10 @@ export const Users = (props: UsersPropsType) => {
                     </span>
                         <span>
                         <span>
-                            <div>{u.fullName}</div>
+                            <div>{u.name}</div>
                             <div>{u.status}</div>
                         </span>
-                        <span>
-                            <div>{u.location.country}</div>
-                            <div>{u.location.city}</div>
-                        </span>
+                            <div>location</div>
                     </span>
                     </div>
                 )}

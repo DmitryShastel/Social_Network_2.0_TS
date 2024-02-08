@@ -1,10 +1,14 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
 export type FollowACType = (userId: number) => FollowActionType
 export type UnfollowACType = (userId: number) => UnfollowActionType
 export type SetUsersACType = (users: Array<UserType>) => SetUsersActionType
+export type SetCurrentPageACType = (currentPage: any) => SetCurrentPageActionType
+export type setTotalUserCountACType = (totalUsersCount: any) => setTotalUserCountActionType
 
 export type FollowActionType = {
     type: 'FOLLOW',
@@ -14,48 +18,41 @@ export type UnfollowActionType = {
     type: 'UNFOLLOW',
     userId: number
 }
-
 export type SetUsersActionType = {
     type: 'SET_USERS',
     users: Array<UserType>
 }
+export type SetCurrentPageActionType = {
+    type: 'SET_CURRENT_PAGE',
+    currentPage: any
+}
+export type setTotalUserCountActionType = {
+    type: 'SET_TOTAL_USERS_COUNT',
+    count: any
+}
 
-export type ActionType = FollowActionType | UnfollowActionType | SetUsersActionType
+export type ActionType =
+    FollowActionType |
+    UnfollowActionType |
+    SetUsersActionType |
+    SetCurrentPageActionType |
+    setTotalUserCountActionType
+
 
 export type UserType = {
     id: number
-    photoUrl: string
-    fullName: string
+    name: string
     followed: boolean
-    status: string
-    location: LocationType
+    status: any
+    photos: {small: any, large: any}
 }
 
-export type LocationType = {
-    country: string
-    city: string
-}
 
 let initialState = {
-    users: [
-        // {
-        //     id: 1,
-        //     photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
-        //     fullName: 'Dima',
-        //     followed: false,
-        //     status: 'I am a boss',
-        //     location: {country: 'Belarus', city: 'Minsk'},
-        // },
-        // {
-        //     id: 2,
-        //     photoUrl: 'https://www.denofgeek.com/wp-content/uploads/2021/12/the-matrix-resurrections-agent-smith-hugo-weaving.jpg?fit=1600%2C1067',
-        //     fullName: 'Vasa',
-        //     followed: true,
-        //     status: 'I am a boss too',
-        //     location: {country: 'Russia', city: 'Moscow'},
-        // },
-
-    ] as Array<UserType>
+    users: [] as Array<UserType>,
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 export type InitialStateType = typeof initialState
@@ -68,13 +65,12 @@ export const userReducer = (state: InitialStateType = initialState, action: Acti
                 users: state.users.map(u => {
                     if (u.id === action.userId) {
                         return {
-                            ...u, followed:  true
+                            ...u, followed: true
                         }
                     }
                     return u
                 })
             }
-
         case UNFOLLOW:
             return {
                 ...state,
@@ -92,28 +88,44 @@ export const userReducer = (state: InitialStateType = initialState, action: Acti
                 ...state,
                 users: action.users
             }
-
+        case SET_CURRENT_PAGE: {
+            return {...state, currentPage: action.currentPage}
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            return {...state, totalUsersCount: action.count}
+        }
         default:
             return state
     }
 }
 
-export const followAC: FollowACType = (userId: number) => {
+export const followAC: FollowACType = (userId: number): FollowActionType => {
     return {
         type: FOLLOW,
         userId
     }
 }
-export const unfollowAC: UnfollowACType = (userId: number) => {
+export const unfollowAC: UnfollowACType = (userId: number): UnfollowActionType => {
     return {
         type: UNFOLLOW,
         userId
     }
 }
-
-export const setUsersAC: SetUsersACType = (users: Array<UserType>) => {
+export const setUsersAC: SetUsersACType = (users: Array<UserType>): SetUsersActionType => {
     return {
         type: SET_USERS,
         users
+    }
+}
+export const setCurrentPageAC: SetCurrentPageACType = (currentPage: any): SetCurrentPageActionType => {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage
+    }
+}
+export const setTotalUserCountAC: setTotalUserCountACType = (totalUsersCount: any): setTotalUserCountActionType => {
+    return {
+        type: SET_TOTAL_USERS_COUNT,
+        count: totalUsersCount
     }
 }
