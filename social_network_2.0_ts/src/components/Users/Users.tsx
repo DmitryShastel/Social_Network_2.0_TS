@@ -23,11 +23,39 @@ export const Users = (props: UsersPropsType) => {
         pages.push(i)
     }
 
+    const displayedPages = 10; // Ограничение на количество отображаемых страниц
+    let startPage = 1;
+    let endPage = displayedPages;
+    // Вычисляем начальную и конечную страницы в зависимости от текущей страницы
+    if (props.currentPage > Math.floor(displayedPages / 2)) {
+        startPage = props.currentPage - Math.floor(displayedPages / 2);
+        endPage = startPage + displayedPages - 1;
+        if (endPage > pagesCount) {
+            endPage = pagesCount;
+            startPage = endPage - displayedPages + 1;
+        }
+    }
+
+    const handleNextPage = () => {
+        if (props.currentPage < pagesCount) {
+            props.changedPage(props.currentPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (props.currentPage > 1) {
+            props.changedPage(props.currentPage - 1);
+        }
+    };
+
 
     return (
         <div className={s.wrapper}>
             <div className={s.content}>
-                {pages.map(p => {
+                <button onClick={handlePrevPage} disabled={props.currentPage === 1}>
+                    Prev
+                </button>
+                {Array.from({length: endPage - startPage + 1}, (_, i) => startPage + i).map(p => {
                     //@ts-ignore
                     return <span className={props.currentPage === p && s.selectedPage}
                                  onClick={() => {
@@ -35,6 +63,12 @@ export const Users = (props: UsersPropsType) => {
                                  }}
                     >{p},</span>
                 })}
+                <button
+                    onClick={handleNextPage}
+                    disabled={props.currentPage === pagesCount}
+                >
+                    Next
+                </button>
             </div>
             {
                 props.users.map(u => <div key={u.id}>
