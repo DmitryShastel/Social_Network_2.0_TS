@@ -1,5 +1,6 @@
 import {AddMessageActionType, UpdateMessageActionType} from "./dialogs-reducer";
 import {AddNewActionType, UpdateNewActionType} from "./news-reducer";
+//@ts-ignore
 import {AddPostActionType, OnPostChangeActionType} from "./profile-reducer";
 
  type StoreType = {

@@ -3,6 +3,7 @@ import s from './Dialogs.module.css'
 import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogItem/DialogItem";
 import {dialogsPageType} from "../../redux/dialogs-reducer";
+import {Navigate} from "react-router-dom";
 
 
 type DialogsType = {
@@ -27,6 +28,11 @@ export const Dialogs = (props: DialogsType) => {
         let body = e.target ? e.target.value : ''
         props.updateNewMessageBody(body)
 
+    }
+
+    //@ts-ignore
+    if (!props.isAuth) {
+        return <Navigate to='/login'/>
     }
 
     return (

@@ -7,26 +7,34 @@ import {Footer} from "./components/Footer/Footer";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import {Login} from "./components/Login/Login";
 
 
 const App: React.FC = () => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
-                <Header/>
+                <HeaderContainer/>
+                {/*<Header/>*/}
                 <Navbar/>
 
                 <div className='app-wrapper-content'>
+
                     <Routes>
-                        <Route path='profile/' element={<Profile/>}/>
+                        {/*<Route path='profile/' element={<ProfileContainer/>}/>*/}
 
-                        <Route path='dialogs/*' element={<DialogsContainer />}/>
+                      <Route path="/profile/:profileId"
+                          //@ts-ignore
+                             element={<ProfileContainer/>}/>
 
-                        {/*<Route path='news/' element={<NewsContainer />}/>*/}
+                        <Route path='dialogs/*' element={<DialogsContainer/>}/>
+
                         <Route path='users/' element={<UsersContainer/>}/>
+                        <Route path='/login' element={<Login/>}/>
 
                         <Route path='music/' element={<Music/>}/>
                         <Route path='settings/' element={<Settings/>}/>
