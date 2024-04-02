@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    InitialStateType,
+    InitialDialogStateType,
     sendMessageActionCreator,
     updateNewMessageBodyActionCreator
 } from "../../redux/dialogs-reducer";
@@ -12,7 +12,7 @@ import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 type MapStatePropsType = {
-    dialogsPage: InitialStateType
+    dialogsPage: InitialDialogStateType
 }
 
 type MapStateDispatchType = {

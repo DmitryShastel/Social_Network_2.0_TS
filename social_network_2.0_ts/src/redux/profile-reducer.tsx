@@ -1,4 +1,4 @@
-import { Dispatch } from "redux"
+import {Dispatch} from "redux"
 import {profileAPI, usersAPI} from "../API/api";
 
 type ProfileActionsType = AddPostActionType | OnPostChangeActionType | SetUserProfileActionType | SetStatusActionType
@@ -47,9 +47,10 @@ let initialState = {
     status: '',
 }
 
-export type initialStateType = typeof initialState
+export type initialProfileStateType = typeof initialState
 
-export const profileReducer = (state: initialStateType = initialState, action: ProfileActionsType): initialStateType => {
+export const profileReducer = (state: initialProfileStateType = initialState, action: ProfileActionsType)
+    : initialProfileStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostsType =
@@ -117,14 +118,12 @@ export const getUserProfile = (userId: number) => (dispatch: Dispatch<ProfileAct
             dispatch(setUserProfileActionCreator(data))
         })
 }
-
 export const getStatus = (userId: number) => (dispatch: Dispatch<ProfileActionsType>) => {
     profileAPI.getStatus(userId)
         .then(data => {
             dispatch(setStatusActionCreator(data))
         })
 }
-
 export const updateStatus = (status: string) => (dispatch: Dispatch<ProfileActionsType>) => {
     profileAPI.updateStatus(status)
         .then(data => {

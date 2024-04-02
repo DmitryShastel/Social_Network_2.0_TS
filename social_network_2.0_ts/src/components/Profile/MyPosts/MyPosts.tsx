@@ -1,10 +1,9 @@
 import React from "react";
 import {Post} from "./Post/Post";
 import s from './Myposts.module.css'
-//import {PostsType} from "../../../redux/profile-reducer";
+import {PostsType} from "../../../redux/profile-reducer";
 
 type MyPostType = {
-    //@ts-ignore
     posts: Array<PostsType>
     newPostText: string
     updateNewPostText: (text: string) => void
@@ -14,7 +13,6 @@ type MyPostType = {
 export const MyPosts = (props: MyPostType) => {
 
     let postElements = props.posts.map(p => <Post id={p.id} message={p.message} like={p.like}/>)
-
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     const onAddPost = () => {
@@ -46,4 +44,3 @@ export const MyPosts = (props: MyPostType) => {
         </div>
     )
 }
-

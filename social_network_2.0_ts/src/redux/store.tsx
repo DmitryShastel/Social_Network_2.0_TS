@@ -1,65 +1,65 @@
 import {AddMessageActionType, UpdateMessageActionType} from "./dialogs-reducer";
 import {AddNewActionType, UpdateNewActionType} from "./news-reducer";
 //@ts-ignore
-import {AddPostActionType, OnPostChangeActionType} from "./profile-reducer";
+// import {AddPostActionType, OnPostChangeActionType} from "./profile-reducer";
 
- type StoreType = {
-    _state: StateType
-    getState: () => StateType
-    _callSubscriber: (arg: StateType) => void
-    subscribe: (observer: () => void) => void
-    dispatch: DispatchType
-}
-type StateType = {
-    profilePage: ProfilePageType
-    dialogsPage: dialogsPageType
-    newsPage: newsPageType
-}
+//  type StoreType = {
+//     _state: StateType
+//     getState: () => StateType
+//     _callSubscriber: (arg: StateType) => void
+//     subscribe: (observer: () => void) => void
+//     dispatch: DispatchType
+// }
+// type StateType = {
+//     profilePage: ProfilePageType
+//     dialogsPage: dialogsPageType
+//     newsPage: newsPageType
+// }
 
 //1-type of posts
-type PostsType = {
-    id: number
-    message: string
-    like: number
-}
-type ProfilePageType = {
-    posts: Array<PostsType>
-    newPostText: string
-}
+// type PostsType = {
+//     id: number
+//     message: string
+//     like: number
+// }
+// type ProfilePageType = {
+//     posts: Array<PostsType>
+//     newPostText: string
+// }
 //2-type of messages
- type MessageType = {
-    id: number
-    message: string
-}
- type DialogsType = {
-    id: number
-    name: string
-}
- type dialogsPageType = {
-    dialogs: Array<DialogsType>
-    messages: Array<MessageType>
-    newMessageBody: string
-}
+//  type MessageType = {
+//     id: number
+//     message: string
+// }
+//  type DialogsType = {
+//     id: number
+//     name: string
+// }
+//  type dialogsPageType = {
+//     dialogs: Array<DialogsType>
+//     messages: Array<MessageType>
+//     newMessageBody: string
+// }
 //3-type of news
-type NewsType = {
-    id: number
-    new: string
-}
-type newsPageType = {
-    news: Array<NewsType>
-    newNewsText: string
-}
+// type NewsType = {
+//     id: number
+//     new: string
+// }
+// type newsPageType = {
+//     news: Array<NewsType>
+//     newNewsText: string
+// }
 
-
-type ActionType =
-    AddPostActionType
-    | OnPostChangeActionType
-    | AddMessageActionType
-    | UpdateMessageActionType
-    | AddNewActionType
-    | UpdateNewActionType
-
-type DispatchType = (action: ActionType) => void
+//
+// type ActionType =
+//     AddPostActionType
+//     | OnPostChangeActionType
+//     | AddMessageActionType
+//     | UpdateMessageActionType
+//     | AddNewActionType
+//     | UpdateNewActionType
+//
+// type DispatchType = (action: ActionType) => void
 
 
 // export let store: StoreType = {

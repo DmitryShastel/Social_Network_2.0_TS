@@ -1,27 +1,34 @@
 import React from "react";
 import {Preloader} from "../../Common/Preloader";
 import {ProfileStatus} from "./ProfileStatus";
+import s from './ProfileInfo.module.css'
 
 
-export const ProfileInfo = (props: any) => {
+type ProfileInfoPropsType = {
+    profile: {
+        photos: {
+            small: string;
+            large: string;
+        };
+    } | null;
+    status: string
+    updateStatus: (status: string) => void;
+}
+
+export const ProfileInfo = (props: ProfileInfoPropsType) => {
 
     if (!props.profile) {
         return <Preloader/>
     }
 
     return (
-        <div>
-            <div>
-                {/*<img src='https://www.planetware.com/wpimages/2022/01/world-most-beautiful-islands-st-lucia-caribbean.jpg'/>*/}
-            </div>
-            <div>
-                <img src={props.profile.photos.large || props.profile.photos}/>
-                <ProfileStatus
-                    //@ts-ignore
-                    status={props.status}
-                    updateStatus={props.updateStatus}/>
-            </div>
-
+        <div className={s.container}>
+            {props.profile.photos && (
+                <img src={props.profile.photos.large} alt="Profile"/>
+            )}
+            <ProfileStatus
+                status={props.status}
+                updateStatus={props.updateStatus}/>
         </div>
     )
 }

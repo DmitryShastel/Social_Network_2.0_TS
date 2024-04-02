@@ -4,10 +4,39 @@ import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {getStatus, getUserProfile, updateStatus} from "../../redux/profile-reducer";
 import {compose} from "redux";
+import {AppStateType} from "../../redux/redux-store";
 
 
-function withRouter(Component: any) {
-    function ComponentWithRouterProp(props: any) {
+type MapStateProfilePropsType = {
+    profile: null | string
+    status: string
+}
+
+interface WithRouterPropsType {
+    location: ReturnType<typeof useLocation>
+    navigate: ReturnType<typeof useNavigate>
+    params: {
+        [key: string]: number;
+    };
+}
+
+type ProfileContainerProps = WithRouterPropsType & {
+    router: WithRouterPropsType
+    profile: {
+        photos: {
+            small: string;
+            large: string;
+        };
+    } | null;
+    status: string;
+    getUserProfile: (userId: number) => void;
+    getStatus: (userId: number) => void;
+    updateStatus: (status: string) => void;
+}
+
+
+export function withRouter<T extends ProfileContainerProps>(Component: React.ComponentType<T>) {
+    function ComponentWithRouterProp(props: T) {
         let location = useLocation();
         let navigate = useNavigate();
         let params = useParams();
@@ -23,34 +52,27 @@ function withRouter(Component: any) {
 }
 
 
-class ProfileContainer extends React.Component {
+class ProfileContainer extends React.Component<ProfileContainerProps> {
 
     componentDidMount() {
-        //@ts-ignore
-        let userId = this.props.router.params.profileId;
+        let userId = this.props.router.params.userId;
         if (!userId) {
             // userId = 12555
             userId = 10
         }
-        //@ts-ignore
         this.props.getUserProfile(userId)
-        //@ts-ignore
         this.props.getStatus(userId)
     }
 
 
     render() {
-
         return (
             <div>
                 <div>
                     <Profile
                         {...this.props}
-                        //@ts-ignore
                         profile={this.props.profile}
-                        //@ts-ignore
                         status={this.props.status}
-                        //@ts-ignore
                         updateStatus={this.props.updateStatus}
                     />
                 </div>
@@ -60,14 +82,14 @@ class ProfileContainer extends React.Component {
 
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: AppStateType): MapStateProfilePropsType => {
     return {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
     }
 }
 
-export default compose(
+export default compose<React.ComponentClass<ProfileContainerProps>>(
     connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
-    withRouter,
-)(ProfileContainer)
+    withRouter
+)(ProfileContainer);

@@ -4,7 +4,18 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 
-export const Profile: React.FC = (props: any) => {
+interface ProfileProps {
+    profile: {
+        photos: {
+            small: string;
+            large: string;
+        };
+    } | null
+    status: string;
+    updateStatus: (status: string) => void;
+}
+
+export const Profile = (props: ProfileProps) => {
     return (
         <div>
 
