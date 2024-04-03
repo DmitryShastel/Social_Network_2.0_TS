@@ -1,20 +1,19 @@
-import React from "react";
-//import {UserType} from "../../redux/users-reducer";
+import React from "react"
+import {UserType} from "../../redux/users-reducer"
 import s from './Users.module.css'
 import userPhoto from '../../accets/image/userPhoto.png'
-import {NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom"
 
 type UsersPropsType = {
-    //@ts-ignore
     users: Array<UserType>
     follow: (userId: number) => void
     unfollow: (userId: number) => void
-    //@ts-ignore
     setUser: (users: Array<UserType>) => void
     pageSize: number
     totalUsersCount: number
     currentPage: number
-    changedPage: (pageNumber: any) => void
+    changedPage: (pageNumber: number) => void
+    followingInProgress: Array<number>
 }
 
 
@@ -44,19 +43,15 @@ export const Users = (props: UsersPropsType) => {
             props.changedPage(props.currentPage + 1);
         }
     };
-
     const handlePrevPage = () => {
         if (props.currentPage > 1) {
             props.changedPage(props.currentPage - 1);
         }
     };
-
-
-    const handleFollow = (id: any) => {
+    const handleFollow = (id: number) => {
         props.follow(id)
     };
-
-    const handleUnfollow = (id: any) => {
+    const handleUnfollow = (id: number) => {
         props.unfollow(id)
     };
 
@@ -66,14 +61,19 @@ export const Users = (props: UsersPropsType) => {
                 <button onClick={handlePrevPage} disabled={props.currentPage === 1}>
                     Prev
                 </button>
+
                 {Array.from({length: endPage - startPage + 1}, (_, i) => startPage + i).map(p => {
-                    //@ts-ignore
-                    return <span className={props.currentPage === p && s.selectedPage}
-                                 onClick={() => {
-                                     props.changedPage(p)
-                                 }}
-                    >{p},</span>
+                    return (
+                        <span
+                            //@ts-ignore
+                            className={props.currentPage === p && s.selectedPage}
+                            onClick={() => {
+                                props.changedPage(p)
+                            }}
+                        >{p},</span>
+                    )
                 })}
+
                 <button
                     onClick={handleNextPage}
                     disabled={props.currentPage === pagesCount}
@@ -97,17 +97,15 @@ export const Users = (props: UsersPropsType) => {
                             {
                                 u.followed
                                     ? <button
-                                        //@ts-ignore
                                         disabled={props.followingInProgress.some(id => id === u.id)}
                                         onClick={() => {
                                             handleUnfollow(u.id)
                                         }}>Unfollow</button>
                                     : <button
-                                        //@ts-ignore
                                         disabled={props.followingInProgress.some(id => id === u.id)}
                                         onClick={() => {
                                             handleFollow(u.id)
-                                    }}>Follow</button>
+                                        }}>Follow</button>
                             }
 
                         </div>

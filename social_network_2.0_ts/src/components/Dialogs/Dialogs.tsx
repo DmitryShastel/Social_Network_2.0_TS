@@ -10,6 +10,7 @@ type DialogsType = {
     updateNewMessageBody: (body: string) => void
     onSendMessageClick: () => void
     dialogsPage: dialogsPageType
+    isAuth: boolean
 }
 
 export const Dialogs = (props: DialogsType) => {
@@ -30,7 +31,7 @@ export const Dialogs = (props: DialogsType) => {
 
     }
 
-    //@ts-ignore
+
     if (!props.isAuth) {
         return <Navigate to='/login'/>
     }

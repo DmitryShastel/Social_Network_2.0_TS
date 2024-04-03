@@ -14,27 +14,3 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
-
-
-// export const rerenderEntireTree = () => {
-//     root.render(
-//         <React.StrictMode>
-//             <Provider store={store}>
-//                 <App/>
-//             </Provider>
-//         </React.StrictMode>,
-//     );
-// }
-
-
-
-
-
-// @ts-ignore
-// const root = ReactDOM.createRoot(document.getElementById('root'))
-//
-//
-// rerenderEntireTree();
-// store.subscribe(() => {
-//     rerenderEntireTree()
-// });

@@ -24,7 +24,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
     return (
         <div className={s.container}>
             {props.profile.photos && (
-                <img src={props.profile.photos.large} alt="Profile"/>
+                <img src={props.profile.photos.large}/>
             )}
             <ProfileStatus
                 status={props.status}

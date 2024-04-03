@@ -14,8 +14,6 @@ export const reducers = combineReducers({
     auth: authReducer,
     news: newsReducer,
     form: formReducer,
-
-
     newsPage: newsReducer,
 })
 

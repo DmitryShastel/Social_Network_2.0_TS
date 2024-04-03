@@ -18,11 +18,12 @@ const App: React.FC = () => {
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <Navbar/>
-
                 <div className='app-wrapper-content'>
-
                     <Routes>
                         <Route path="profile/"
+                            //@ts-ignore
+                               element={<ProfileContainer/>}/>
+                        <Route path="profile/:userId"
                             //@ts-ignore
                                element={<ProfileContainer/>}/>
                         <Route path='dialogs/*' element={<DialogsContainer/>}/>

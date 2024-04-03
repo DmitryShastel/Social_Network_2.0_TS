@@ -1,7 +1,16 @@
 import {Dispatch} from "redux"
 import {profileAPI, usersAPI} from "../API/api";
 
-type ProfileActionsType = AddPostActionType | OnPostChangeActionType | SetUserProfileActionType | SetStatusActionType
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const SET_USER_PROFILE = 'SET-USER-PROFILE'
+const SET_STATUS = 'SET_STATUS'
+
+export type PostsType = {
+    id: number
+    message: string
+    like: number
+}
 
 
 export type AddPostActionType = {
@@ -25,19 +34,12 @@ export type UpdateNewPostTextActionCreatorType = (text: string) => OnPostChangeA
 export type SetUserProfileActionCreatorType = (profile: null | string) => SetUserProfileActionType
 export type SetStatusActionCreatorType = (status: string) => SetStatusActionType
 
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const SET_USER_PROFILE = 'SET-USER-PROFILE'
-const SET_STATUS = 'SET_STATUS'
-
-export type PostsType = {
-    id: number
-    message: string
-    like: number
-}
+type ProfileActionsType = AddPostActionType | OnPostChangeActionType | SetUserProfileActionType | SetStatusActionType
 
 
-let initialState = {
+
+
+let InitialState = {
     posts: [
         {id: 1, message: 'Hi how are you', like: 15},
         {id: 2, message: 'It is my first post', like: 23}
@@ -47,10 +49,10 @@ let initialState = {
     status: '',
 }
 
-export type initialProfileStateType = typeof initialState
+export type InitialProfileStateType = typeof InitialState
 
-export const profileReducer = (state: initialProfileStateType = initialState, action: ProfileActionsType)
-    : initialProfileStateType => {
+export const profileReducer = (state: InitialProfileStateType = InitialState, action: ProfileActionsType)
+    : InitialProfileStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost: PostsType =
@@ -87,12 +89,12 @@ export const profileReducer = (state: initialProfileStateType = initialState, ac
     }
 }
 
-export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = () => {
+export const addNewPostTextActionCreator: AddNewPostTextActionCreatorType = (): AddPostActionType => {
     return {
         type: ADD_POST
     }
 }
-export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType = (text) => {
+export const updateNewPostTextActionCreator: UpdateNewPostTextActionCreatorType = (text: string): OnPostChangeActionType => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newPostText: text
